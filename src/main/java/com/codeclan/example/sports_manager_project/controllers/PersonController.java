@@ -22,6 +22,10 @@ public class PersonController {
         return new ResponseEntity<>(personRepository.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/people/{id}")
+
+
+
 
 
 }

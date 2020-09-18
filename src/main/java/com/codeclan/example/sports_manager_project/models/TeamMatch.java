@@ -15,11 +15,11 @@ public class TeamMatch {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "team_id")
+    @JoinColumn(name = "team_id_1", referencedColumnName = "id")
     private Team team1;
 
     @ManyToOne
-    @JoinColumn(name = "team_id")
+    @JoinColumn(name = "team_id_2", referencedColumnName = "id")
     private Team team2;
 
     @Column
@@ -28,10 +28,11 @@ public class TeamMatch {
     @Column
     private int score2;
 
-    @Column
+    @ManyToOne
+    @JoinColumn(name = "venue_id")
     private Venue venue;
 
-    @OneToMany(mappedBy = "team_match", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "teamMatch", fetch = FetchType.LAZY)
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     private List<ScoreEvent> scoreEvents;
 

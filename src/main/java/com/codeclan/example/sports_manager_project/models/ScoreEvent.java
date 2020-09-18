@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "scoreEvents")
+@Table(name = "score_events")
 public class ScoreEvent {
 
     @Id
@@ -14,7 +14,7 @@ public class ScoreEvent {
     private Long id;
 
     @ManyToOne
-    @JsonIgnoreProperties({"scoreEvents"})
+    @JsonIgnoreProperties({"score_events"})
     @JoinColumn(name = "person_id", nullable = false)
     private Person person;
 
@@ -24,7 +24,7 @@ public class ScoreEvent {
     private Date time;
 
     @ManyToOne
-    @JsonIgnoreProperties({"scoreEvents"})
+    @JsonIgnoreProperties({"score_events"})
     @JoinColumn(name = "team_match_id", nullable = false)
     private TeamMatch teamMatch;
 
