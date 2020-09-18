@@ -31,13 +31,13 @@ public class TeamMatch {
     @Column
     private Venue venue;
 
-    @OneToMany(mappedBy = "team_match")
+    @OneToMany(mappedBy = "team_match", fetch = FetchType.LAZY)
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     private List<ScoreEvent> scoreEvents;
 
     @ManyToOne
     @JoinColumn(name = "tournament_id")
-    @JsonIgnoreProperties({"matches"})
+    @JsonIgnoreProperties({"team_matches"})
     private Tournament tournament;
 
 

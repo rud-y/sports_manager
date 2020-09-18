@@ -23,11 +23,17 @@ public class ScoreEvent {
     @Column
     private Date time;
 
+    @ManyToOne
+    @JsonIgnoreProperties({"scoreEvents"})
+    @JoinColumn(name = "team_match_id", nullable = false)
+    private TeamMatch teamMatch;
 
-    public ScoreEvent(Person person, int value, Date time) {
+
+    public ScoreEvent(Person person, int value, Date time, TeamMatch teamMatch) {
         this.person = person;
         this.value = value;
         this.time = time;
+        this.teamMatch = teamMatch;
     }
 
     public ScoreEvent() {
