@@ -34,7 +34,6 @@ public class Person {
         return id;
     }
 
-
     public String getFirstName() {
         return firstName;
     }

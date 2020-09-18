@@ -2,6 +2,7 @@ package com.codeclan.example.sports_manager_project.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cascade;
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -31,11 +32,11 @@ public class Team {
     )
     private List<Person> players;
 
-    public Team(String name, String shortName, Venue venue, List<Person> players) {
+    public Team(String name, String shortName, Venue venue) {
         this.name = name;
         this.shortName = shortName;
         this.venue = venue;
-        this.players = players;
+        this.players = new ArrayList<>();
     }
     public Team() {
     }
