@@ -1,9 +1,10 @@
 package com.codeclan.example.sports_manager_project.models;
-import org.hibernate.annotations.Table;
 import javax.persistence.*;
+
 
 @Entity
 @Table(name = "venues")
+
 public class Venue {
 
     @Id

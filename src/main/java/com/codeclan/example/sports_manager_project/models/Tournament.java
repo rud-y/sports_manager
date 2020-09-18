@@ -1,14 +1,15 @@
 package com.codeclan.example.sports_manager_project.models;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.deser.DataFormatReaders;
 import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.Table;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "leagueSeasons")
-public class LeagueSeason {
+@Table(name = "tournaments")
+public class Tournament {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,26 +22,33 @@ public class LeagueSeason {
 
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @JsonIgnoreProperties({leagueSeasons})
+    @JsonBackReference
     @JoinTable(
-            name = "leagueSeasons_teams",
-            joinColumns = {@JoinColumn(name = "leagueSeason_id", nullable = false, updatable = false)},
+            name = "tournaments_teams",
+            joinColumns = {@JoinColumn(name = "tournament_id", nullable = false, updatable = false)},
             inverseJoinColumns = {@JoinColumn(name = "team_id", nullable = false, updatable = false)}
     )
     private List<Team> teams;
 
-    @OneToMany(mappedBy = "leagueSeason")
-    @JsonIgnoreProperties({"leagueSeason"})
-    private List<Match> matches;
+    @OneToMany(mappedBy = "tournament")
+    @JsonIgnoreProperties({"tournament"})
+    private List<TeamMatch> matches;
 
 
-    public LeagueSeason(Sport sport, String name, List<Team> teams, List<Match> matches) {
+    public Tournament(Sport sport, String name) {
         this.sport = sport;
         this.name = name;
         this.teams = new ArrayList<>();
         this.matches = new ArrayList<>();
     }
-    public LeagueSeason() {
+    public Tournament() {
+    }
+
+    public void addTeam(Team team) {
+        this.teams.add(team);
+    }
+    public void addMatch(TeamMatch match) {
+        this.matches.add(match);
     }
 
 
@@ -73,11 +81,11 @@ public class LeagueSeason {
         this.teams = teams;
     }
 
-    public List<Match> getMatches() {
+    public List<TeamMatch> getMatches() {
         return matches;
     }
 
-    public void setMatches(List<Match> matches) {
+    public void setMatches(List<TeamMatch> matches) {
         this.matches = matches;
     }
 }

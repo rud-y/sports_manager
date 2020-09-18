@@ -41,6 +41,9 @@ public class Team {
     }
 
 
+    public void addPlayer(Person person) {
+        this.players.add(person);
+    }
 
     public Long getId() {
         return id;
