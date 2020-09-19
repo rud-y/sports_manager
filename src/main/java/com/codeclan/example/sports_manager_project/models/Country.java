@@ -19,5 +19,6 @@ public enum Country {
     TURKEY,
     UKRAINE,
     PORTUGAL,
-    POLAND;
+    POLAND,
+    CANADA;
 }

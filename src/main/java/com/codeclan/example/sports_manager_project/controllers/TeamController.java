@@ -19,9 +19,9 @@ public class TeamController {
 
     @GetMapping(value = "/teams")
     public ResponseEntity<List<Team>> getAllTeams(
-            @RequestParam(name= "venue", required = false) Venue venue) {
+            @RequestParam(name= "venue", required = false) String venue) {
         if(venue != null) {
-            return new ResponseEntity<>(teamRepository.findByVenue(venue), HttpStatus.OK);
+            return new ResponseEntity<>(teamRepository.findByVenueName(venue), HttpStatus.OK);
         }
 
         return new ResponseEntity<>(teamRepository.findAll(), HttpStatus.OK);

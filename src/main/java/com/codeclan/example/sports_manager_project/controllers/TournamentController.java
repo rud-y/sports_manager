@@ -3,6 +3,7 @@ package com.codeclan.example.sports_manager_project.controllers;
 import com.codeclan.example.sports_manager_project.models.Tournament;
 import com.codeclan.example.sports_manager_project.models.Tournament;
 import com.codeclan.example.sports_manager_project.repositories.TournamentRepository;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,11 @@ public class TournamentController {
     TournamentRepository tournamentRepository;
 
     @GetMapping(value = "/tournaments")
-    public ResponseEntity<List<Tournament>> getAllTournaments () {
+    public ResponseEntity<List<Tournament>> getAllTournaments (
+            @RequestParam(name = "team", required = false) String team) {
+        if(team != null) {
+            return new ResponseEntity<>(tournamentRepository.findByTeamsName(team), HttpStatus.OK);
+        }
         return new ResponseEntity<>(tournamentRepository.findAll(), HttpStatus.OK);
     }
 
