@@ -1,4 +1,5 @@
 package com.codeclan.example.sports_manager_project.models;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cascade;
 import javax.persistence.*;
@@ -24,7 +25,7 @@ public class Team {
 
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @JsonIgnoreProperties({"teams"})
+
     @JoinTable(
             name= "teams_players",
             joinColumns = {@JoinColumn(name = "team_id", nullable = false, updatable = false)},

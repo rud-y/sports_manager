@@ -22,7 +22,6 @@ public class Tournament {
 
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-
     @JoinTable(
             name = "tournaments_teams",
             joinColumns = {@JoinColumn(name = "tournament_id", nullable = false, updatable = false)},

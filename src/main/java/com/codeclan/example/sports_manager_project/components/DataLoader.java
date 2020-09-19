@@ -1,9 +1,6 @@
 package com.codeclan.example.sports_manager_project.components;
 import com.codeclan.example.sports_manager_project.models.*;
-import com.codeclan.example.sports_manager_project.repositories.PersonRepository;
-import com.codeclan.example.sports_manager_project.repositories.TeamRepository;
-import com.codeclan.example.sports_manager_project.repositories.TournamentRepository;
-import com.codeclan.example.sports_manager_project.repositories.VenueRepository;
+import com.codeclan.example.sports_manager_project.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -25,6 +22,11 @@ public class DataLoader implements ApplicationRunner {
     TournamentRepository tournamentRepository;
     @Autowired
     VenueRepository venueRepository;
+    @Autowired
+    TeamMatchRepository teamMatchRepository;
+    @Autowired
+    ScoreEventRepository scoreEventRepository;
+
 
     public DataLoader() {}
 
@@ -73,6 +75,16 @@ public class DataLoader implements ApplicationRunner {
         tournament1.addTeam(team3);
         tournament1.addTeam(team4);
         tournamentRepository.save(tournament1);
+
+        Date scoreTime1 = new GregorianCalendar(2020, Calendar.AUGUST, 30).getTime();
+        TeamMatch teamMatch1 = new TeamMatch(team1, team2, venue1, tournament1);
+        ScoreEvent scoreEvent1 = new ScoreEvent(person1, 1, scoreTime1, teamMatch1);
+        teamMatchRepository.save(teamMatch1);
+        scoreEventRepository.save(scoreEvent1);
+        teamMatch1.addScoreEvent(scoreEvent1);
+        teamMatchRepository.save(teamMatch1);
+
+        tournament1.addMatch(teamMatch1);
 
         // nhl
 

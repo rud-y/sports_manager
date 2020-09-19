@@ -1,4 +1,5 @@
 package com.codeclan.example.sports_manager_project.models;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cascade;
 
@@ -32,6 +33,7 @@ public class TeamMatch {
     @JoinColumn(name = "venue_id")
     private Venue venue;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "teamMatch", fetch = FetchType.LAZY)
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     private List<ScoreEvent> scoreEvents;
@@ -41,20 +43,29 @@ public class TeamMatch {
     @JsonIgnoreProperties({"team_matches"})
     private Tournament tournament;
 
+//    @Columnn
+//    private Boolean completed;
 
-    public TeamMatch(Team team1, Team team2, int score1, int score2, Venue venue, Tournament tournament) {
+
+    public TeamMatch(Team team1, Team team2, Venue venue, Tournament tournament) {
         this.team1 = team1;
         this.team2 = team2;
-        this.score1 = score1;
-        this.score2 = score2;
+        this.score1 = 0;
+        this.score2 = 0;
         this.venue = venue;
         this.scoreEvents = new ArrayList<>();
         this.tournament = tournament;
+//        this.completed = false;
     }
+
+
 
     public TeamMatch() {
     }
 
+    public void addScoreEvent(ScoreEvent scoreEvent) {
+        this.scoreEvents.add(scoreEvent);
+    }
 
 
     public Long getId() {
