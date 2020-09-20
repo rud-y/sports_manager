@@ -74,7 +74,6 @@ public class TeamMatch {
         }
     }
 
-
     public Long getId() {
         return id;
     }

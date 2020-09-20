@@ -16,7 +16,11 @@ public class TeamMatchController {
     TeamMatchRepository teamMatchRepository;
 
     @GetMapping(value = "/team_matches")
-    public ResponseEntity<List<TeamMatch>> getAllTeamMatches() {
+    public ResponseEntity<List<TeamMatch>> getAllTeamMatches(
+            @RequestParam(name = "scorer", required = false) String scorer) {
+        if(scorer != null) {
+            return new ResponseEntity<>(teamMatchRepository.findByScoreEventsPersonLastName(scorer),HttpStatus.OK);
+        }
         return new ResponseEntity<>(teamMatchRepository.findAll(), HttpStatus.OK);
     }
 

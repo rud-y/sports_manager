@@ -24,7 +24,7 @@ public class ScoreEvent {
     private Date time;
 
     @ManyToOne
-//    @JsonIgnoreProperties({"score_events"})
+    @JsonIgnoreProperties({"score_events"})
     @JoinColumn(name = "team_match_id", nullable = false)
     private TeamMatch teamMatch;
 

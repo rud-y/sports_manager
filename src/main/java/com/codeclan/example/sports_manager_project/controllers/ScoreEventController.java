@@ -1,5 +1,6 @@
 package com.codeclan.example.sports_manager_project.controllers;
 
+import com.codeclan.example.sports_manager_project.models.Person;
 import com.codeclan.example.sports_manager_project.models.ScoreEvent;
 import com.codeclan.example.sports_manager_project.models.ScoreEvent;
 import com.codeclan.example.sports_manager_project.repositories.ScoreEventRepository;
@@ -17,7 +18,11 @@ public class ScoreEventController {
     ScoreEventRepository scoreEventRepository;
 
     @GetMapping(value = "/score_events")
-    public ResponseEntity<List<ScoreEvent>> getAllScoreEvents() {
+    public ResponseEntity<List<ScoreEvent>> getAllScoreEvents(
+            @RequestParam(name = "player", required = false) String player) {
+        if(player != null){
+            return new ResponseEntity<>(scoreEventRepository.findByPersonLastName(player), HttpStatus.OK);
+        }
         return new ResponseEntity<>(scoreEventRepository.findAll(), HttpStatus.OK);
     }
 
