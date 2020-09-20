@@ -40,7 +40,7 @@ public class TeamMatch {
 
     @ManyToOne
     @JoinColumn(name = "tournament_id")
-    @JsonIgnoreProperties({"team_matches"})
+    @JsonBackReference
     private Tournament tournament;
 
 //    @Columnn
@@ -64,7 +64,14 @@ public class TeamMatch {
     }
 
     public void addScoreEvent(ScoreEvent scoreEvent) {
+
         this.scoreEvents.add(scoreEvent);
+
+        if(this.team1.getPlayers().contains(scoreEvent.getPerson())) {
+            this.score1 += 1;
+        }else{
+            this.score2 += 1;
+        }
     }
 
 
