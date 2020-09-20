@@ -3,6 +3,7 @@ package com.codeclan.example.sports_manager_project.controllers;
 import com.codeclan.example.sports_manager_project.models.Country;
 import com.codeclan.example.sports_manager_project.models.Person;
 import com.codeclan.example.sports_manager_project.repositories.PersonRepository;
+import jdk.jfr.Frequency;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,13 +19,9 @@ public class PersonController {
 
     @GetMapping(value = "/people")
     public ResponseEntity<List<Person>> getAllPlayers(
-            @RequestParam(name = "surname", required = false) String surname,
-            @RequestParam(name = "nationality", required = false) String nationality) {
+            @RequestParam(name = "nationality", required = false) Country nationality) {
         if(nationality != null){
-            return new ResponseEntity<>(personRepository.findByEnumTypeCountry(nationality), HttpStatus.OK);
-        }
-        if(surname != null) {
-            return new ResponseEntity<>(personRepository.findByLastName(surname), HttpStatus.OK );
+            return new ResponseEntity<>(personRepository.findByNationality(nationality), HttpStatus.OK);
         }
         return new ResponseEntity<>(personRepository.findAll(), HttpStatus.OK);
     }

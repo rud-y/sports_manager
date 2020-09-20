@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository
 public interface ScoreEventRepository extends JpaRepository<ScoreEvent, Long> {
+    List<ScoreEvent>findByPersonId(Long personId);
 
-    List<ScoreEvent> findByPersonLastName(String player);
+//    List<ScoreEvent> findByPersonLastName(String player);
 }

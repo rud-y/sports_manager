@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface PersonRepository extends JpaRepository<Person, Long> {
 
-     List<Person> findByLastName(String surname);
+//     List<Person> findByLastName(String surname);
 
-    List<Person>findByEnumTypeCountry(String nationality);
+    List<Person>findByNationality(Country nationality);
 }

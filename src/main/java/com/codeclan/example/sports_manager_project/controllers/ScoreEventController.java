@@ -19,10 +19,14 @@ public class ScoreEventController {
 
     @GetMapping(value = "/score_events")
     public ResponseEntity<List<ScoreEvent>> getAllScoreEvents(
-            @RequestParam(name = "player", required = false) String player) {
-        if(player != null){
-            return new ResponseEntity<>(scoreEventRepository.findByPersonLastName(player), HttpStatus.OK);
+//            @RequestParam(name = "player", required = false) String player,
+            @RequestParam(name = "person", required = false) Long personId) {
+        if(personId != null) {
+            return new ResponseEntity<>(scoreEventRepository.findByPersonId(personId),HttpStatus.OK);
         }
+//        if(player != null){
+//            return new ResponseEntity<>(scoreEventRepository.findByPersonLastName(player), HttpStatus.OK);
+//        }
         return new ResponseEntity<>(scoreEventRepository.findAll(), HttpStatus.OK);
     }
 
