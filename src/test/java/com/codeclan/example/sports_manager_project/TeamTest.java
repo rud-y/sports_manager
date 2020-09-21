@@ -23,7 +23,7 @@ public class TeamTest {
     @Before
     public void before() {
         date = new GregorianCalendar(2020, Calendar.SEPTEMBER, 20).getTime();
-        person1  = new Person("David", "Beckham", date, Country.ENGLAND );
+        person1  = new Person("David", "Beckham", date, "England" );
         venue = new Venue("Emirates Stadium");
         team = new Team("Arsenal London", "ARS", venue);
     }

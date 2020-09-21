@@ -19,7 +19,7 @@ public class PersonController {
 
     @GetMapping(value = "/people")
     public ResponseEntity<List<Person>> getAllPlayers(
-            @RequestParam(name = "nationality", required = false) Country nationality) {
+            @RequestParam(name = "nationality", required = false) String nationality) {
         if(nationality != null){
             return new ResponseEntity<>(personRepository.findByNationality(nationality), HttpStatus.OK);
         }

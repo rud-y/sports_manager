@@ -38,10 +38,14 @@ public class DataLoader implements ApplicationRunner {
         Date date3 = new GregorianCalendar(1989, Calendar.FEBRUARY, 2).getTime();
         Date date4 = new GregorianCalendar(1997, Calendar.JUNE, 6).getTime();
 
-        Person person1 = new Person("Jude", "Bellingham", date, Country.ENGLAND );
-        Person person2 = new Person("Jurgen", "Klinsmann", date2, Country.GERMANY);
-        Person person3 = new Person("Andres", "Iniesta", date3, Country.SPAIN);
-        Person person4 = new Person("Aaron", "Ramsdale", date4, Country.ENGLAND);
+//        Person person1 = new Person("Jude", "Bellingham", date, Country.ENGLAND );
+//        Person person2 = new Person("Jurgen", "Klinsmann", date2, Country.GERMANY);
+//        Person person3 = new Person("Andres", "Iniesta", date3, Country.SPAIN);
+//        Person person4 = new Person("Aaron", "Ramsdale", date4, Country.ENGLAND);
+        Person person1 = new Person("Jude", "Bellingham", date, "England" );
+        Person person2 = new Person("Jurgen", "Klinsmann", date2, "Germany");
+        Person person3 = new Person("Andres", "Iniesta", date3, "Spain");
+        Person person4 = new Person("Aaron", "Ramsdale", date4, "England");
         personRepository.save(person1);
         personRepository.save(person2);
         personRepository.save(person3);
@@ -109,8 +113,8 @@ public class DataLoader implements ApplicationRunner {
         Date date20 = new GregorianCalendar(1995, Calendar.FEBRUARY, 25).getTime();
         Date date21 = new GregorianCalendar(1997, Calendar.JUNE, 20).getTime();
 
-        Person person20 = new Person("Marian", "Hossa", date20, Country.SLOVAKIA );
-        Person person21 = new Person("Auston", "Matthews", date21, Country.CANADA);
+        Person person20 = new Person("Marian", "Hossa", date20, "Slovakia");
+        Person person21 = new Person("Auston", "Matthews", date21, "Canada");
         personRepository.save(person20);
         personRepository.save(person21);
         Venue venue20 = new Venue("Wells Fargo Center");

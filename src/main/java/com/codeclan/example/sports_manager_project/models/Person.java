@@ -17,9 +17,9 @@ public class Person {
     @Column
     private Date dateOfBirth;
     @Column
-    private Country nationality;
+    private String nationality;
 
-    public Person(String firstName, String lastName, Date dateOfBirth, Country nationality) {
+    public Person(String firstName, String lastName, Date dateOfBirth, String nationality) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -57,11 +57,11 @@ public class Person {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Country getNationality() {
+    public String getNationality() {
         return nationality;
     }
 
-    public void setNationality(Country nationality) {
+    public void setNationality(String nationality) {
         this.nationality = nationality;
     }
 }

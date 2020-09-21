@@ -12,5 +12,5 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
 
 //     List<Person> findByLastName(String surname);
 
-    List<Person>findByNationality(Country nationality);
+    List<Person>findByNationality(String nationality);
 }
