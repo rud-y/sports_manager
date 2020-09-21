@@ -1,9 +1,7 @@
 package com.codeclan.example.sports_manager_project.controllers;
 
-import com.codeclan.example.sports_manager_project.models.Country;
 import com.codeclan.example.sports_manager_project.models.Person;
 import com.codeclan.example.sports_manager_project.repositories.PersonRepository;
-import jdk.jfr.Frequency;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

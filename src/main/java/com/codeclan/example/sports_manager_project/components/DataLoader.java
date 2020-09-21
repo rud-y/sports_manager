@@ -6,7 +6,6 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.JoinColumn;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -56,6 +55,11 @@ public class DataLoader implements ApplicationRunner {
         personRepository.save(person3);
         personRepository.save(person4);
 
+        Sport sport1 = new Sport("football");
+        Sport sport2 = new Sport("basketball");
+        Sport sport3 = new Sport("rugby");
+        Sport sport4 = new Sport("ice hockey");
+
         Venue venue1 = new Venue("Highbury");
         Venue venue2 = new Venue("Old Trafford");
         Venue venue3 = new Venue("Wembley");
@@ -78,7 +82,7 @@ public class DataLoader implements ApplicationRunner {
         teamRepository.save(team3);
         teamRepository.save(team4);
 
-        Tournament tournament1 = new Tournament(Sport.FOOTBALL, "PremierLeague");
+        Tournament tournament1 = new Tournament(sport1, "PremierLeague");
         tournament1.addTeam(team1);
         tournament1.addTeam(team2);
         tournament1.addTeam(team3);
@@ -113,19 +117,15 @@ public class DataLoader implements ApplicationRunner {
         teamMatch1.setCompleted(true);
         teamMatchRepository.save(teamMatch1);
 
-        CountryClass country1 = new CountryClass("England");
-        CountryClass country2 = new CountryClass("France");
-        CountryClass country3 = new CountryClass("Spain");
-        CountryClass country4 = new CountryClass("Italy");
+        Country country1 = new Country("England");
+        Country country2 = new Country("France");
+        Country country3 = new Country("Spain");
+        Country country4 = new Country("Italy");
         countryClassRepository.save(country1);
         countryClassRepository.save(country2);
         countryClassRepository.save(country3);
         countryClassRepository.save(country4);
 
-        SportClass sport1 = new SportClass("football");
-        SportClass sport2 = new SportClass("basketball");
-        SportClass sport3 = new SportClass("rugby");
-        SportClass sport4 = new SportClass("ice hockey");
         sportClassRepository.save(sport1);
         sportClassRepository.save(sport2);
         sportClassRepository.save(sport3);
@@ -152,7 +152,7 @@ public class DataLoader implements ApplicationRunner {
         teamRepository.save(team20);
         teamRepository.save(team21);
 
-        Tournament tournament2 = new Tournament(Sport.ICE_HOCKEY, "NHL");
+        Tournament tournament2 = new Tournament(sport4, "NHL");
         tournament2.addTeam(team20);
         tournament2.addTeam(team21);
         tournamentRepository.save(tournament2);

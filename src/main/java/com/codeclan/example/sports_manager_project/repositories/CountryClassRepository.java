@@ -1,11 +1,11 @@
 package com.codeclan.example.sports_manager_project.repositories;
 
-import com.codeclan.example.sports_manager_project.models.CountryClass;
+import com.codeclan.example.sports_manager_project.models.Country;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CountryClassRepository extends JpaRepository<CountryClass, Long> {
+public interface CountryClassRepository extends JpaRepository<Country, Long> {
 
 
 }

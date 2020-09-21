@@ -1,6 +1,5 @@
 package com.codeclan.example.sports_manager_project;
 
-import com.codeclan.example.sports_manager_project.models.Country;
 import com.codeclan.example.sports_manager_project.models.Person;
 import com.codeclan.example.sports_manager_project.models.Team;
 import com.codeclan.example.sports_manager_project.models.Venue;

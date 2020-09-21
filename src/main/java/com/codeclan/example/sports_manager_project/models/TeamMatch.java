@@ -63,7 +63,6 @@ public class TeamMatch {
     }
 
     public void addScoreEvent(ScoreEvent scoreEvent) {
-
         this.scoreEvents.add(scoreEvent);
 
         if(this.team1.getPlayers().contains(scoreEvent.getPerson())) {
@@ -73,10 +72,29 @@ public class TeamMatch {
         }
     }
 
+    public Boolean isDraw() {
+        return this.score1 == this.score2;
+    }
+
+    public Team getWinner() {
+        if (this.isDraw()) {
+            return  null;
+        }
+        return this.score1 > this.score2 ? this.team1 : this.team2;
+    }
+
+    public Team getLoser() {
+        if(this.isDraw()){
+            return null;
+        }
+        return this.score1 < this.score2 ? this.team1 : this.team2;
+    }
+
+
+
     public Boolean getCompleted() {
         return completed;
     }
-
     public void setCompleted(Boolean completed) {
         this.completed = completed;
     }

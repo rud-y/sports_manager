@@ -17,17 +17,19 @@ public class TournamentTest {
     private Team team;
     private Team team2;
     private Date date;
+    private Sport sport1;
     private Person person1;
     private Venue venue;
 
     @Before
     public void before() {
         date = new GregorianCalendar(2020, Calendar.SEPTEMBER, 20).getTime();
+        sport1 = new Sport("football");
         person1  = new Person("David", "Beckham", date, "England" );
         venue = new Venue("Emirates Stadium");
         team = new Team("Arsenal London", "ARS", venue);
         team2 = new Team("Manchester United", "MAN", venue);
-        tournament = new Tournament(Sport.FOOTBALL, "Premier League");
+        tournament = new Tournament(sport1, "Premier League");
     }
 
     @Test
