@@ -26,6 +26,10 @@ public class DataLoader implements ApplicationRunner {
     TeamMatchRepository teamMatchRepository;
     @Autowired
     ScoreEventRepository scoreEventRepository;
+    @Autowired
+    CountryClassRepository countryClassRepository;
+//    @Autowired
+//    SportClassRepository sportClassRepository;
 
 
     public DataLoader() {}
@@ -38,6 +42,7 @@ public class DataLoader implements ApplicationRunner {
         Date date3 = new GregorianCalendar(1989, Calendar.FEBRUARY, 2).getTime();
         Date date4 = new GregorianCalendar(1997, Calendar.JUNE, 6).getTime();
 
+        //with Enums
 //        Person person1 = new Person("Jude", "Bellingham", date, Country.ENGLAND );
 //        Person person2 = new Person("Jurgen", "Klinsmann", date2, Country.GERMANY);
 //        Person person3 = new Person("Andres", "Iniesta", date3, Country.SPAIN);
@@ -107,6 +112,15 @@ public class DataLoader implements ApplicationRunner {
         teamMatchRepository.save(teamMatch1);
         teamMatch1.setCompleted(true);
         teamMatchRepository.save(teamMatch1);
+
+        CountryClass country1 = new CountryClass("England");
+        CountryClass country2 = new CountryClass("France");
+        CountryClass country3 = new CountryClass("Spain");
+        CountryClass country4 = new CountryClass("Italy");
+        countryClassRepository.save(country1);
+        countryClassRepository.save(country2);
+        countryClassRepository.save(country3);
+        countryClassRepository.save(country4);
 
 
         // nhl
