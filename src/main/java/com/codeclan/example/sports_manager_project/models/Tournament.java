@@ -15,7 +15,8 @@ public class Tournament {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @ManyToOne()
+    @JoinColumn(name = "tournament_id")
     private Sport sport;
     @Column
     private String name;

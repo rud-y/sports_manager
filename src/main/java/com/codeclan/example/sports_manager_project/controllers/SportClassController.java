@@ -1,7 +1,7 @@
 package com.codeclan.example.sports_manager_project.controllers;
 
 import com.codeclan.example.sports_manager_project.models.Sport;
-import com.codeclan.example.sports_manager_project.repositories.SportClassRepository;
+import com.codeclan.example.sports_manager_project.repositories.SportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +14,10 @@ import java.util.List;
 public class SportClassController {
 
     @Autowired
-    SportClassRepository sportClassRepository;
+    SportRepository sportRepository;
 
     @GetMapping(value = "/sports")
     public ResponseEntity<List<Sport>> getAllSports() {
-        return new ResponseEntity<>(sportClassRepository.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(sportRepository.findAll(), HttpStatus.OK);
     }
 }

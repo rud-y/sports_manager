@@ -26,9 +26,9 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     ScoreEventRepository scoreEventRepository;
     @Autowired
-    CountryClassRepository countryClassRepository;
+    CountryRepository countryRepository;
     @Autowired
-    SportClassRepository sportClassRepository;
+    SportRepository sportRepository;
 
 
     public DataLoader() {}
@@ -46,6 +46,8 @@ public class DataLoader implements ApplicationRunner {
 //        Person person2 = new Person("Jurgen", "Klinsmann", date2, Country.GERMANY);
 //        Person person3 = new Person("Andres", "Iniesta", date3, Country.SPAIN);
 //        Person person4 = new Person("Aaron", "Ramsdale", date4, Country.ENGLAND);
+        //country
+
         Person person1 = new Person("Jude", "Bellingham", date, "England" );
         Person person2 = new Person("Jurgen", "Klinsmann", date2, "Germany");
         Person person3 = new Person("Andres", "Iniesta", date3, "Spain");
@@ -59,6 +61,10 @@ public class DataLoader implements ApplicationRunner {
         Sport sport2 = new Sport("basketball");
         Sport sport3 = new Sport("rugby");
         Sport sport4 = new Sport("ice hockey");
+        sportRepository.save(sport1);
+        sportRepository.save(sport2);
+        sportRepository.save(sport3);
+        sportRepository.save(sport4);
 
         Venue venue1 = new Venue("Highbury");
         Venue venue2 = new Venue("Old Trafford");
@@ -121,15 +127,10 @@ public class DataLoader implements ApplicationRunner {
         Country country2 = new Country("France");
         Country country3 = new Country("Spain");
         Country country4 = new Country("Italy");
-        countryClassRepository.save(country1);
-        countryClassRepository.save(country2);
-        countryClassRepository.save(country3);
-        countryClassRepository.save(country4);
-
-        sportClassRepository.save(sport1);
-        sportClassRepository.save(sport2);
-        sportClassRepository.save(sport3);
-        sportClassRepository.save(sport4);
+        countryRepository.save(country1);
+        countryRepository.save(country2);
+        countryRepository.save(country3);
+        countryRepository.save(country4);
 
 
         // nhl
