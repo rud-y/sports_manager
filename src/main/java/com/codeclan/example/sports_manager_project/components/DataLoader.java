@@ -84,6 +84,8 @@ public class DataLoader implements ApplicationRunner {
 
         TeamMatch teamMatch1 = new TeamMatch(team1, team2, venue1, tournament1);
         teamMatchRepository.save(teamMatch1);
+        tournament1.addMatch(teamMatch1);
+
         ScoreEvent scoreEvent1 = new ScoreEvent(person1, 1, scoreTime1, teamMatch1);
         ScoreEvent scoreEvent2 = new ScoreEvent(person4, 1, scoreTime2, teamMatch1);
         ScoreEvent scoreEvent3 = new ScoreEvent(person3, 1, scoreTime3, teamMatch1);
@@ -99,16 +101,16 @@ public class DataLoader implements ApplicationRunner {
         teamMatch1.addScoreEvent(scoreEvent3);
         teamMatch1.addScoreEvent(scoreEvent4);
         teamMatchRepository.save(teamMatch1);
+        teamMatch1.setCompleted(true);
+        teamMatchRepository.save(teamMatch1);
 
-        tournament1.addMatch(teamMatch1);
 
         // nhl
-
         Date date20 = new GregorianCalendar(1995, Calendar.FEBRUARY, 25).getTime();
         Date date21 = new GregorianCalendar(1997, Calendar.JUNE, 20).getTime();
 
-        Person person20 = new Person("Marian", "Hossa", date, Country.SLOVAKIA );
-        Person person21 = new Person("Auston", "Matthews", date2, Country.CANADA);
+        Person person20 = new Person("Marian", "Hossa", date20, Country.SLOVAKIA );
+        Person person21 = new Person("Auston", "Matthews", date21, Country.CANADA);
         personRepository.save(person20);
         personRepository.save(person21);
         Venue venue20 = new Venue("Wells Fargo Center");

@@ -10,4 +10,5 @@ public interface TeamMatchRepository extends JpaRepository<TeamMatch, Long> {
 
     List<TeamMatch> findByScoreEventsPersonLastName(String scorer);
 
+    List<TeamMatch> findByCompleted(Boolean completed);
 }

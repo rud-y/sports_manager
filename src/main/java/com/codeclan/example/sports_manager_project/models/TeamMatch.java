@@ -43,8 +43,8 @@ public class TeamMatch {
     @JsonBackReference
     private Tournament tournament;
 
-//    @Columnn
-//    private Boolean completed;
+    @Column
+    private Boolean completed;
 
 
     public TeamMatch(Team team1, Team team2, Venue venue, Tournament tournament) {
@@ -55,7 +55,7 @@ public class TeamMatch {
         this.venue = venue;
         this.scoreEvents = new ArrayList<>();
         this.tournament = tournament;
-//        this.completed = false;
+        this.completed = false;
     }
 
 
@@ -71,6 +71,14 @@ public class TeamMatch {
         }else{
             this.score2 += 1;
         }
+    }
+
+    public Boolean getCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(Boolean completed) {
+        this.completed = completed;
     }
 
     public Long getId() {
