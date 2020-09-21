@@ -21,7 +21,7 @@ public class ScoreEvent {
     @Column
     private int value;
     @Column
-    private Date time;
+    private int minute;
 
     @ManyToOne
     @JsonIgnoreProperties({"score_events"})
@@ -29,10 +29,10 @@ public class ScoreEvent {
     private TeamMatch teamMatch;
 
 
-    public ScoreEvent(Person person, int value, Date time, TeamMatch teamMatch) {
+    public ScoreEvent(Person person, int value, int minute, TeamMatch teamMatch) {
         this.person = person;
         this.value = value;
-        this.time = time;
+        this.minute = minute;
         this.teamMatch = teamMatch;
     }
 
@@ -63,11 +63,11 @@ public class ScoreEvent {
         this.value = value;
     }
 
-    public Date getTime() {
-        return time;
+    public int getMinute() {
+        return minute;
     }
 
-    public void setTime(Date time) {
-        this.time = time;
+    public void setMinute(int minute) {
+        this.minute = minute;
     }
 }

@@ -80,20 +80,20 @@ public class DataLoader implements ApplicationRunner {
         tournament1.addTeam(team4);
         tournamentRepository.save(tournament1);
 
-        Date scoreTime1 = new GregorianCalendar(2020, Calendar.AUGUST, 30).getTime();
-        Date scoreTime2 = new GregorianCalendar(2020, Calendar.AUGUST, 30).getTime();
-        Date scoreTime3 = new GregorianCalendar(2020, Calendar.AUGUST, 30).getTime();
-        Date scoreTime4 = new GregorianCalendar(2020, Calendar.AUGUST, 30).getTime();
+//        Date scoreTime1 = new GregorianCalendar(2020, Calendar.AUGUST, 30).getTime();
+//        Date scoreTime2 = new GregorianCalendar(2020, Calendar.AUGUST, 30).getTime();
+//        Date scoreTime3 = new GregorianCalendar(2020, Calendar.AUGUST, 30).getTime();
+//        Date scoreTime4 = new GregorianCalendar(2020, Calendar.AUGUST, 30).getTime();
 
 
         TeamMatch teamMatch1 = new TeamMatch(team1, team2, venue1, tournament1);
         teamMatchRepository.save(teamMatch1);
         tournament1.addMatch(teamMatch1);
 
-        ScoreEvent scoreEvent1 = new ScoreEvent(person1, 1, scoreTime1, teamMatch1);
-        ScoreEvent scoreEvent2 = new ScoreEvent(person4, 1, scoreTime2, teamMatch1);
-        ScoreEvent scoreEvent3 = new ScoreEvent(person3, 1, scoreTime3, teamMatch1);
-        ScoreEvent scoreEvent4 = new ScoreEvent(person4, 1, scoreTime4, teamMatch1);
+        ScoreEvent scoreEvent1 = new ScoreEvent(person1, 1, 20, teamMatch1);
+        ScoreEvent scoreEvent2 = new ScoreEvent(person4, 1, 31, teamMatch1);
+        ScoreEvent scoreEvent3 = new ScoreEvent(person3, 1, 76, teamMatch1);
+        ScoreEvent scoreEvent4 = new ScoreEvent(person4, 1, 89, teamMatch1);
 
 
         scoreEventRepository.save(scoreEvent1);
