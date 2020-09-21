@@ -28,8 +28,8 @@ public class DataLoader implements ApplicationRunner {
     ScoreEventRepository scoreEventRepository;
     @Autowired
     CountryClassRepository countryClassRepository;
-//    @Autowired
-//    SportClassRepository sportClassRepository;
+    @Autowired
+    SportClassRepository sportClassRepository;
 
 
     public DataLoader() {}
@@ -121,6 +121,15 @@ public class DataLoader implements ApplicationRunner {
         countryClassRepository.save(country2);
         countryClassRepository.save(country3);
         countryClassRepository.save(country4);
+
+        SportClass sport1 = new SportClass("football");
+        SportClass sport2 = new SportClass("basketball");
+        SportClass sport3 = new SportClass("rugby");
+        SportClass sport4 = new SportClass("ice hockey");
+        sportClassRepository.save(sport1);
+        sportClassRepository.save(sport2);
+        sportClassRepository.save(sport3);
+        sportClassRepository.save(sport4);
 
 
         // nhl
