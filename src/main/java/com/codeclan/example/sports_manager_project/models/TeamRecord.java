@@ -45,8 +45,6 @@ public class TeamRecord {
         this.scoreAgainst += score;
     }
 
-
-
     public int getWins() {
         return wins;
     }

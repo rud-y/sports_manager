@@ -1,6 +1,5 @@
 package com.codeclan.example.sports_manager_project;
 
-
 import com.codeclan.example.sports_manager_project.models.*;
 import org.junit.Before;
 import org.junit.Test;

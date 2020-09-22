@@ -2,12 +2,12 @@ package com.codeclan.example.sports_manager_project;
 import com.codeclan.example.sports_manager_project.models.*;
 import org.junit.Before;
 import org.junit.Test;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TeamMatchTest {
 
@@ -51,22 +51,6 @@ public class TeamMatchTest {
         teamMatch1.setCompleted(true);
         assertEquals(true, teamMatch1.isDraw());
     }
-
-
-//        @Test
-//        public void oneTeamWins() {
-//            teamMatch1.addScoreEvent(scoreEvent1);
-//            teamMatch1.setCompleted(true);
-//            assertEquals(team1, teamMatch1.getWinner());
-//        }
-//    @Test
-//    public void ATeamLoses() {
-//        teamMatch1.setScore1(1);
-//        teamMatch1.setScore2(2);
-//        teamMatch1.setCompleted(true);
-//        assertEquals(team1, teamMatch1.getLoser());
-//    }
-
 
 
 }

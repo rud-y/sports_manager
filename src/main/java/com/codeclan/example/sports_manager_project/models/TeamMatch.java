@@ -45,11 +45,6 @@ public class TeamMatch {
     @Column
     private Boolean completed;
 
-//    @ManyToOne
-//    @JoinColumn(name = "tournamentTable_id")
-//    private TournamentTable tournamentTable;
-
-
     public TeamMatch(Team team1, Team team2, Venue venue, Tournament tournament) {
         this.team1 = team1;
         this.team2 = team2;
@@ -60,7 +55,6 @@ public class TeamMatch {
         this.tournament = tournament;
         this.completed = false;
     }
-
 
     public TeamMatch() {
     }
@@ -92,8 +86,6 @@ public class TeamMatch {
         }
         return this.score1 < this.score2 ? this.team1 : this.team2;
     }
-
-
 
     public Boolean getCompleted() {
         return completed;

@@ -16,6 +16,7 @@ public class Tournament {
     @ManyToOne()
     @JoinColumn(name = "tournament_id")
     private Sport sport;
+
     @Column
     private String name;
 
@@ -48,7 +49,6 @@ public class Tournament {
         return table;
     }
 
-
     public void addTeam(Team team) {
         this.teams.add(team);
     }
@@ -56,10 +56,12 @@ public class Tournament {
         this.matches.add(match);
     }
 
-
-
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Sport getSport() {

@@ -42,13 +42,16 @@ public class Team {
     public Team() {
     }
 
-
     public void addPlayer(Person person) {
         this.players.add(person);
     }
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

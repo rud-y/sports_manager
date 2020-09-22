@@ -1,6 +1,4 @@
 package com.codeclan.example.sports_manager_project;
-
-
 import com.codeclan.example.sports_manager_project.models.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,7 +8,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 
 public class TournamentTableTest {
 
@@ -34,7 +34,7 @@ public class TournamentTableTest {
     private Sport sport1;
     private ArrayList<TeamMatch> matches;
 
-    @Before
+    @Before()
     public void before() {
         date = new GregorianCalendar(1991, Calendar.AUGUST, 8).getTime();
         person1 = new Person("Jude", "Bellingham", date, "England");
@@ -66,9 +66,9 @@ public class TournamentTableTest {
 
     @Test
     public void canGetRecords() {
-        
         assertEquals(4, tournamentTable1.getRecords().size());
     }
+
     @Test
     public void canGetRecordsKeys() {
         assertTrue( "Arsenal London", tournamentTable1.getRecords().containsKey(team1));
@@ -99,6 +99,4 @@ public class TournamentTableTest {
         assertEquals(2, tournamentTable1.getRecords().get(team2).getScoreAgainst());
     }
 
-
-
-    }
+}
