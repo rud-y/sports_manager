@@ -36,7 +36,7 @@ public class DataLoader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         //premiership
-        Date date = new GregorianCalendar(1991, Calendar.AUGUST, 8).getTime();
+        Date date1 = new GregorianCalendar(1991, Calendar.AUGUST, 8).getTime();
         Date date2 = new GregorianCalendar(1983, Calendar.DECEMBER, 12).getTime();
         Date date3 = new GregorianCalendar(1989, Calendar.FEBRUARY, 2).getTime();
         Date date4 = new GregorianCalendar(1997, Calendar.JUNE, 6).getTime();
@@ -48,7 +48,7 @@ public class DataLoader implements ApplicationRunner {
 //        Person person4 = new Person("Aaron", "Ramsdale", date4, Country.ENGLAND);
         //country
 
-        Person person1 = new Person("Jude", "Bellingham", date, "England" );
+        Person person1 = new Person("Jude", "Bellingham", date1, "England" );
         Person person2 = new Person("Jurgen", "Klinsmann", date2, "Germany");
         Person person3 = new Person("Andres", "Iniesta", date3, "Spain");
         Person person4 = new Person("Aaron", "Ramsdale", date4, "England");

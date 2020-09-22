@@ -9,7 +9,6 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column
     private String firstName;
     @Column
@@ -17,9 +16,9 @@ public class Person {
     @Column
     private Date dateOfBirth;
     @Column
-    private String nationality;
+    private Country nationality;
 
-    public Person(String firstName, String lastName, Date dateOfBirth, String nationality) {
+    public Person(String firstName, String lastName, Date dateOfBirth, Country nationality) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -57,11 +56,11 @@ public class Person {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getNationality() {
+    public Country getNationality() {
         return nationality;
     }
 
-    public void setNationality(String nationality) {
+    public void setNationality(Country nationality) {
         this.nationality = nationality;
     }
 }

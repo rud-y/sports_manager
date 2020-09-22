@@ -49,14 +49,13 @@ public class Tournament {
     }
 
 
+
     public void addTeam(Team team) {
         this.teams.add(team);
     }
     public void addMatch(TeamMatch match) {
         this.matches.add(match);
     }
-
-
 
     public Long getId() {
         return id;
