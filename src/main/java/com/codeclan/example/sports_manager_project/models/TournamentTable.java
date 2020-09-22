@@ -1,18 +1,22 @@
 package com.codeclan.example.sports_manager_project.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+//@Entity
+//@Table(name = "tables")
 public class TournamentTable {
 
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+//    @OneToMany(mappedBy = "tournamentTable")
     private List<TeamMatch> matches;
+
+//    @OneToMany(mappedBy = "tournamentTable")
     private HashMap<Team, TeamRecord> records;
 
     public TournamentTable(List<TeamMatch> matches) {
@@ -20,14 +24,14 @@ public class TournamentTable {
         this.records = new HashMap<>();
     }
 
-    public HashMap<Team, TeamRecord> getRecords() {
-        return records;
-    }
+    public TournamentTable() {}
 
-    public void calculate() {
+    // !!!
+    public HashMap<Team, TeamRecord> getRecords() {
         for(TeamMatch match: matches) {
             processMatch(match);
         }
+        return this.records;
     }
 
     private void processMatch(TeamMatch match) {
@@ -51,11 +55,12 @@ public class TournamentTable {
     }
 
     private Boolean hasRecord (Team team) {
-        return this.records.containsKey(team);
+        return records.containsKey(team);
     }
 
     private void createRecord(Team team) {
         records.put(team, new TeamRecord());
     }
+
 
 }

@@ -38,4 +38,6 @@ public class TournamentTest {
         tournament.addTeam(team2);
         assertEquals(2, tournament.getTeams().size());
     }
+
+
 }

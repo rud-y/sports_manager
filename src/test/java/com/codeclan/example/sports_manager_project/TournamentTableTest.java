@@ -47,12 +47,17 @@ public class TournamentTableTest {
         venue3 = new Venue("Upton Park");
         venue4 = new Venue("Stadium");
         team1 = new Team("Arsenal London", "ARS", venue1);
+        team1.addPlayer(person1);
+
         team2 = new Team("Manchester United", "ManU", venue2);
         team3 = new Team("West Ham", "WHM", venue3);
         team4 = new Team("Milwall", "MIL", venue4);
         team5 = new Team("Norwich", "NOR", new Venue("N stadium"));
-        teamMatch1 = new TeamMatch(team1, team2, venue1, tournament1);
-        teamMatch2 = new TeamMatch(team3, team4, venue3, tournament1);
+        teamMatch1 = new TeamMatch(team1, team2, team1.getVenue(), tournament1);
+        teamMatch2 = new TeamMatch(team3, team4, team3.getVenue(), tournament1);
+        teamMatch1.addScoreEvent(scoreEvent1);
+        teamMatch1.addScoreEvent(scoreEvent2);
+
         matches = new ArrayList<>();
         matches.add(teamMatch1);
         matches.add(teamMatch2);
@@ -61,16 +66,39 @@ public class TournamentTableTest {
 
     @Test
     public void canGetRecords() {
+        
         assertEquals(4, tournamentTable1.getRecords().size());
+    }
+    @Test
+    public void canGetRecordsKeys() {
+        assertTrue( "Arsenal London", tournamentTable1.getRecords().containsKey(team1));
     }
 
     @Test
-    public void canGetRecordKeys() {
-        assertTrue(tournamentTable1.getRecords().containsKey(team1));
+    public void canGetScoresFor() {
+        assertEquals(2, tournamentTable1.getRecords().get(team1).getScoreFor());
+    }
+
+    @Test
+    public void canGetWins() {
+        assertEquals(1, tournamentTable1.getRecords().get(team1).getWins());
+    }
+
+    @Test
+    public void canGetDraw() {
+        assertEquals(1, tournamentTable1.getRecords().get(team3).getDraws());
+    }
+
+    @Test
+    public void canGetLoss() {
+        assertEquals(1, tournamentTable1.getRecords().get(team2).getLosses());
+    }
+
+    @Test
+    public void canGetScoresAgainst(){
+        assertEquals(2, tournamentTable1.getRecords().get(team2).getScoreAgainst());
     }
 
 
 
-}
-
-
+    }
