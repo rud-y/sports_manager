@@ -51,49 +51,7 @@ public class TournamentTableTest {
         teamMatch1 = new TeamMatch(team1, team2, venue1, tournament1);
         teamMatch2 = new TeamMatch(team3, team4, venue3, tournament1);
     }
-
-    @Test
-    public void canProcessMatch() {
-        tournamentTable1.processMatch(teamMatch1);
-        assertEquals(4, tournamentTable1.getRecords().size());
-    }
-
-
-//    private Tournament scotPrem;
-//    private Team rangers;
-//    private Team celtic;
-//    private Team hibs;
-//    private Team hearts;
-//    private TeamMatch match1;
-//    private TeamMatch match2;
-//    private TeamMatch match3;
-//    private TeamMatch match4;
-//    private TeamMatch match5;
-//    private TeamMatch match6;
-//    @Before
-//    public void before() {
-//        scotPrem = new Tournament(new Sport("Football"), "Scottish Premier");
-//        rangers = new Team("Glasgow Rangers","Rangers", new Venue("Ibrox"));
-//        celtic = new Team("Glasgow Celtic","Celtic", new Venue("Celtic Park"));
-//        hibs = new Team("Hibernian","Hibs", new Venue("Easter Road"));
-//        hearts = new Team("Heart of Midlothian","Hearts", new Venue("Tynecastle"));
-//        match1 = new TeamMatch(rangers, celtic, rangers.getVenue(), scotPrem);
-//        match2 = new TeamMatch(hibs, hearts, hibs.getVenue(), scotPrem);
-//        match3 = new TeamMatch(celtic, hibs, celtic.getVenue(), scotPrem);
-//        match4 = new TeamMatch(hearts, rangers, hearts.getVenue(), scotPrem);
-//        match5 = new TeamMatch(rangers, hibs, rangers.getVenue(), scotPrem);
-//        match6 = new TeamMatch(hearts, celtic, hearts.getVenue(), scotPrem);
-//        match1.setScore1(0);
-//        match1.setScore2(0);
-//        match2.setScore1(6);
-//        match2.setScore2(1);
-//        match3.setScore1(2);
-//        match3.setScore2(2);
-//        match4.setScore1(2);
-//        match4.setScore2(0);
-//        match5.setScore1(1);
-//        match5.setScore2(2);
-//        match6.setScore1(3);
-//        match6.setScore2(3);
-
 }
+
+
+
