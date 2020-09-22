@@ -81,14 +81,6 @@ public class TournamentTableTest {
 
 
 
-
-
-
-
-
-
-
-
 //    private Tournament scotPrem;
 //    private Team rangers;
 //    private Team celtic;

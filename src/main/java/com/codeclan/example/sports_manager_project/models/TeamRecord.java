@@ -78,11 +78,11 @@ public class TeamRecord {
         this.draws = draws;
     }
 
-    public int getLoses() {
+    public int getLosses() {
         return losses;
     }
 
-    public void setLoses(int loses) {
+    public void setLosses(int loses) {
         this.losses = loses;
     }
 
