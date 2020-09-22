@@ -61,6 +61,7 @@ public class TournamentTableTest {
 
     @Test
     public void canGetRecords() {
+        
         assertEquals(4, tournamentTable1.getRecords().size());
     }
 
