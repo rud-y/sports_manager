@@ -2,27 +2,27 @@ package com.codeclan.example.sports_manager_project.models;
 
 import javax.persistence.*;
 
-@Entity
+//@Entity
 
 public class TeamRecord {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    @Column
+//    @Column
     private int wins;
 
-    @Column
+//    @Column
     private int draws;
-
-    @Column
+//
+//    @Column
     private int losses;
 
-    @Column
+//    @Column
     private int scoreFor;
 
-    @Column
+//    @Column
     private int scoreAgainst;
 
 //

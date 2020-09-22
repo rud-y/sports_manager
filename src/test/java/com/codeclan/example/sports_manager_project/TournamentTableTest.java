@@ -10,7 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class TournamentTableTest {
 
@@ -47,12 +47,17 @@ public class TournamentTableTest {
         venue3 = new Venue("Upton Park");
         venue4 = new Venue("Stadium");
         team1 = new Team("Arsenal London", "ARS", venue1);
+        team1.addPlayer(person1);
+
         team2 = new Team("Manchester United", "ManU", venue2);
         team3 = new Team("West Ham", "WHM", venue3);
         team4 = new Team("Milwall", "MIL", venue4);
         team5 = new Team("Norwich", "NOR", new Venue("N stadium"));
-        teamMatch1 = new TeamMatch(team1, team2, venue1, tournament1);
-        teamMatch2 = new TeamMatch(team3, team4, venue3, tournament1);
+        teamMatch1 = new TeamMatch(team1, team2, team1.getVenue(), tournament1);
+        teamMatch2 = new TeamMatch(team3, team4, team3.getVenue(), tournament1);
+        teamMatch1.addScoreEvent(scoreEvent1);
+        teamMatch1.addScoreEvent(scoreEvent2);
+
         matches = new ArrayList<>();
         matches.add(teamMatch1);
         matches.add(teamMatch2);
@@ -64,77 +69,20 @@ public class TournamentTableTest {
         
         assertEquals(4, tournamentTable1.getRecords().size());
     }
-
     @Test
-    public void checkIfHasRecord_false () {
-        assertEquals(false , tournamentTable1.hasRecord(team5));
+    public void canGetRecordsKeys() {
+        assertTrue( "Arsenal London", tournamentTable1.getRecords().containsKey(team1));
     }
 
     @Test
-    public void checkIfHasRecord_true () {
-        assertEquals(true , tournamentTable1.hasRecord(team1));
+    public void canGetScoresFor() {
+        assertEquals(2, tournamentTable1.getRecords().get(team1).getScoreFor());
     }
 
-
-
-
-
-
-
-//    private Tournament scotPrem;
-//    private Team rangers;
-//    private Team celtic;
-//    private Team hibs;
-//    private Team hearts;
-//    private TeamMatch match1;
-//    private TeamMatch match2;
-//    private TeamMatch match3;
-//    private TeamMatch match4;
-//    private TeamMatch match5;
-//    private TeamMatch match6;
-//
-//    private TournamentTable tournamentTable1;
-//    private ArrayList<TeamMatch> matches;
-//
-//    @Before
-//    public void before() {
-//        scotPrem = new Tournament(new Sport("Football"), "Scottish Premier");
-//        rangers = new Team("Glasgow Rangers", "Rangers", new Venue("Ibrox"));
-//        celtic = new Team("Glasgow Celtic", "Celtic", new Venue("Celtic Park"));
-//        hibs = new Team("Hibernian", "Hibs", new Venue("Easter Road"));
-//        hearts = new Team("Heart of Midlothian", "Hearts", new Venue("Tynecastle"));
-//        match1 = new TeamMatch(rangers, celtic, rangers.getVenue(), scotPrem);
-//        match2 = new TeamMatch(hibs, hearts, hibs.getVenue(), scotPrem);
-//        match3 = new TeamMatch(celtic, hibs, celtic.getVenue(), scotPrem);
-//        match4 = new TeamMatch(hearts, rangers, hearts.getVenue(), scotPrem);
-//        match5 = new TeamMatch(rangers, hibs, rangers.getVenue(), scotPrem);
-//        match6 = new TeamMatch(hearts, celtic, hearts.getVenue(), scotPrem);
-//        match1.setScore1(0);
-//        match1.setScore2(0);
-//        match2.setScore1(6);
-//        match2.setScore2(1);
-//        match3.setScore1(2);
-//        match3.setScore2(2);
-//        match4.setScore1(2);
-//        match4.setScore2(0);
-//        match5.setScore1(1);
-//        match5.setScore2(2);
-//        match6.setScore1(3);
-//        match6.setScore2(3);
-//
-//        matches.add(match1);
-//        matches.add(match2);
-//        matches.add(match3);
-//        matches.add(match4);
-//        matches.add(match5);
-//        matches.add(match6);
-//        tournamentTable1 = new TournamentTable(matches);
-//    }
-//
-//        @Test
-//        public void canCheckTeamIsInTable () {
-//            assertEquals(true, tournamentTable1.isNotInTable(hibs));
-//        }
+    @Test
+    public void canGetWins() {
+        assertEquals(1, tournamentTable1.getRecords().get(team1).getWins());
+    }
 
 
 
