@@ -1,7 +1,5 @@
 package com.codeclan.example.sports_manager_project.models;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.deser.DataFormatReaders;
 import org.hibernate.annotations.Cascade;
 import javax.persistence.*;
 import java.util.ArrayList;

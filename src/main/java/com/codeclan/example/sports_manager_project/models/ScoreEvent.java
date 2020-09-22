@@ -1,9 +1,7 @@
 package com.codeclan.example.sports_manager_project.models;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "score_events")
