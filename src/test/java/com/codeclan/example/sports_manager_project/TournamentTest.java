@@ -24,7 +24,7 @@ public class TournamentTest {
     public void before() {
         date = new GregorianCalendar(2020, Calendar.SEPTEMBER, 20).getTime();
         sport1 = new Sport("football");
-        person1  = new Person("David", "Beckham", date, "England" );
+        person1  = new Person("David", "Beckham", date, new Country("England") );
         venue = new Venue("Emirates Stadium");
         team = new Team("Arsenal London", "ARS", venue);
         team2 = new Team("Manchester United", "MAN", venue);

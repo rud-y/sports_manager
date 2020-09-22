@@ -1,4 +1,6 @@
 package com.codeclan.example.sports_manager_project.models;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -16,10 +18,13 @@ public class Person {
     private String lastName;
     @Column
     private Date dateOfBirth;
-    @Column
-    private String nationality;
 
-    public Person(String firstName, String lastName, Date dateOfBirth, String nationality) {
+    @ManyToOne
+    @JoinColumn(name = "country_id", nullable = false)
+    @JsonIgnoreProperties({"people"})
+    private Country nationality;
+
+    public Person(String firstName, String lastName, Date dateOfBirth, Country nationality) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -61,11 +66,11 @@ public class Person {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getNationality() {
+    public Country getNationality() {
         return nationality;
     }
 
-    public void setNationality(String nationality) {
+    public void setNationality(Country nationality) {
         this.nationality = nationality;
     }
 }

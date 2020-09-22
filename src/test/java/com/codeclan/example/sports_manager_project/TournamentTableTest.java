@@ -37,7 +37,7 @@ public class TournamentTableTest {
     @Before()
     public void before() {
         date = new GregorianCalendar(1991, Calendar.AUGUST, 8).getTime();
-        person1 = new Person("Jude", "Bellingham", date, "England");
+        person1 = new Person("Jude", "Bellingham", date, new Country("England"));
         sport1 = new Sport("football");
         tournament1 = new Tournament(sport1, "PremierLeague");
         scoreEvent1 = new ScoreEvent(person1, 1, 45, teamMatch1);
@@ -51,8 +51,8 @@ public class TournamentTableTest {
 
         team2 = new Team("Manchester United", "ManU", venue2);
         team3 = new Team("West Ham", "WHM", venue3);
-        team4 = new Team("Milwall", "MIL", venue4);
-        team5 = new Team("Norwich", "NOR", new Venue("N stadium"));
+        team4 = new Team("Millwall", "MIL", venue4);
+        team5 = new Team("Norwich", "NOR", new Venue("Carrow Road"));
         teamMatch1 = new TeamMatch(team1, team2, team1.getVenue(), tournament1);
         teamMatch2 = new TeamMatch(team3, team4, team3.getVenue(), tournament1);
         teamMatch1.addScoreEvent(scoreEvent1);

@@ -1,5 +1,6 @@
 package com.codeclan.example.sports_manager_project;
 
+import com.codeclan.example.sports_manager_project.models.Country;
 import com.codeclan.example.sports_manager_project.models.Person;
 import com.codeclan.example.sports_manager_project.models.Team;
 import com.codeclan.example.sports_manager_project.models.Venue;
@@ -22,7 +23,7 @@ public class TeamTest {
     @Before
     public void before() {
         date = new GregorianCalendar(2020, Calendar.SEPTEMBER, 20).getTime();
-        person1  = new Person("David", "Beckham", date, "England" );
+        person1  = new Person("David", "Beckham", date, new Country("England") );
         venue = new Venue("Emirates Stadium");
         team = new Team("Arsenal London", "ARS", venue);
     }

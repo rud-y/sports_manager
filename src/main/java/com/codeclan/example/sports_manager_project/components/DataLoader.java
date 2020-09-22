@@ -6,6 +6,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import java.lang.reflect.Array;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -35,23 +36,35 @@ public class DataLoader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+
+        Country can = new Country("Canada");
+        Country eng = new Country("England");
+        Country fra = new Country("France");
+        Country ger = new Country("Germany");
+        Country ita = new Country( "Italy");
+        Country sco = new Country("Scotland");
+        Country spa = new Country("Spain");
+        Country slo = new Country("Slovakia");
+        Country usa = new Country("USA");
+        Country wal = new Country("Wales");
+        Country[] countries = {can, eng, fra, ger, ita, sco, spa, slo, usa, wal};
+        for (Country country: countries){
+            countryRepository.save(country);
+        }
+
         //premiership
+
         Date date = new GregorianCalendar(1991, Calendar.AUGUST, 8).getTime();
         Date date2 = new GregorianCalendar(1983, Calendar.DECEMBER, 12).getTime();
         Date date3 = new GregorianCalendar(1989, Calendar.FEBRUARY, 2).getTime();
         Date date4 = new GregorianCalendar(1997, Calendar.JUNE, 6).getTime();
 
-        //with Enums
-//        Person person1 = new Person("Jude", "Bellingham", date, Country.ENGLAND );
-//        Person person2 = new Person("Jurgen", "Klinsmann", date2, Country.GERMANY);
-//        Person person3 = new Person("Andres", "Iniesta", date3, Country.SPAIN);
-//        Person person4 = new Person("Aaron", "Ramsdale", date4, Country.ENGLAND);
-        //country
 
-        Person person1 = new Person("Jude", "Bellingham", date, "England" );
-        Person person2 = new Person("Jurgen", "Klinsmann", date2, "Germany");
-        Person person3 = new Person("Andres", "Iniesta", date3, "Spain");
-        Person person4 = new Person("Aaron", "Ramsdale", date4, "England");
+
+        Person person1 = new Person("Jude", "Bellingham", date, eng );
+        Person person2 = new Person("Jurgen", "Klinsmann", date2, ger);
+        Person person3 = new Person("Andres", "Iniesta", date3, spa);
+        Person person4 = new Person("Aaron", "Ramsdale", date4, eng);
         personRepository.save(person1);
         personRepository.save(person2);
         personRepository.save(person3);
@@ -123,22 +136,13 @@ public class DataLoader implements ApplicationRunner {
         teamMatch1.setCompleted(true);
         teamMatchRepository.save(teamMatch1);
 
-        Country country1 = new Country("England");
-        Country country2 = new Country("France");
-        Country country3 = new Country("Spain");
-        Country country4 = new Country("Italy");
-        countryRepository.save(country1);
-        countryRepository.save(country2);
-        countryRepository.save(country3);
-        countryRepository.save(country4);
-
 
         // nhl
         Date date20 = new GregorianCalendar(1995, Calendar.FEBRUARY, 25).getTime();
         Date date21 = new GregorianCalendar(1997, Calendar.JUNE, 20).getTime();
 
-        Person person20 = new Person("Marian", "Hossa", date20, "Slovakia");
-        Person person21 = new Person("Auston", "Matthews", date21, "Canada");
+        Person person20 = new Person("Marian", "Hossa", date20, slo);
+        Person person21 = new Person("Auston", "Matthews", date21, can);
         personRepository.save(person20);
         personRepository.save(person21);
         Venue venue20 = new Venue("Wells Fargo Center");
