@@ -1,4 +1,7 @@
 package com.codeclan.example.sports_manager_project.models;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -15,6 +18,7 @@ public class Person {
     private String lastName;
     @Column
     private Date dateOfBirth;
+
     @Column
     private Country nationality;
 

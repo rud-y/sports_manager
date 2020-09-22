@@ -41,122 +41,116 @@ public class DataLoader implements ApplicationRunner {
         Date date3 = new GregorianCalendar(1989, Calendar.FEBRUARY, 2).getTime();
         Date date4 = new GregorianCalendar(1997, Calendar.JUNE, 6).getTime();
 
-        //with Enums
-//        Person person1 = new Person("Jude", "Bellingham", date, Country.ENGLAND );
-//        Person person2 = new Person("Jurgen", "Klinsmann", date2, Country.GERMANY);
-//        Person person3 = new Person("Andres", "Iniesta", date3, Country.SPAIN);
-//        Person person4 = new Person("Aaron", "Ramsdale", date4, Country.ENGLAND);
-        //country
+        Person person1 = new Person("Jude", "Bellingham", date1, new Country("England"));
+        Person person2 = new Person("Jurgen", "Klinsmann", date2, new Country("Germany"));
+        Person person3 = new Person("Andres", "Iniesta", date3, new Country("Spain"));
+        Person person4 = new Person("Aaron", "Ramsdale", date4, new Country("England"));
+        Person person5 = new Person("Mesut", "Oxil", date1, new Country("Germany"));
+        Person person6 = new Person("David", "Silva", date2, new Country("Spain"));
+        Person person7 = new Person("Vincent", "Kompany", date3, new Country("Belgium"));
+        Person person8 = new Person("Gerard", "Pique", date4, new Country("Spain"));
+        Person person9 = new Person("Edinson", "Cavani", date1, new Country("Uruguay"));
+        Person person10 = new Person("Louis", "Suarez", date2, new Country("Uruguay"));
 
-        Person person1 = new Person("Jude", "Bellingham", date1, "England" );
-        Person person2 = new Person("Jurgen", "Klinsmann", date2, "Germany");
-        Person person3 = new Person("Andres", "Iniesta", date3, "Spain");
-        Person person4 = new Person("Aaron", "Ramsdale", date4, "England");
         personRepository.save(person1);
         personRepository.save(person2);
         personRepository.save(person3);
         personRepository.save(person4);
-
-        Sport sport1 = new Sport("football");
-        Sport sport2 = new Sport("basketball");
-        Sport sport3 = new Sport("rugby");
-        Sport sport4 = new Sport("ice hockey");
-        sportRepository.save(sport1);
-        sportRepository.save(sport2);
-        sportRepository.save(sport3);
-        sportRepository.save(sport4);
-
-        Venue venue1 = new Venue("Highbury");
-        Venue venue2 = new Venue("Old Trafford");
-        Venue venue3 = new Venue("Wembley");
-        Venue venue4 = new Venue("Ibrox Stadium");
-        venueRepository.save(venue1);
-        venueRepository.save(venue2);
-        venueRepository.save(venue3);
-        venueRepository.save(venue4);
-
-        Team team1 = new Team("Arsenal", "Gunners", venue1);
-        Team team2 = new Team("Manchester", "ManU", venue2);
-        Team team3 = new Team("Chelsea", "Blues", venue3);
-        Team team4 = new Team("Glasgow Rangers", "The Teddy Bears", venue4);
-        team1.addPlayer(person1);
-        team1.addPlayer(person2);
-        team2.addPlayer(person3);
-        team2.addPlayer(person4);
-        teamRepository.save(team1);
-        teamRepository.save(team2);
-        teamRepository.save(team3);
-        teamRepository.save(team4);
-
-        Tournament tournament1 = new Tournament(sport1, "PremierLeague");
-        tournament1.addTeam(team1);
-        tournament1.addTeam(team2);
-        tournament1.addTeam(team3);
-        tournament1.addTeam(team4);
-        tournamentRepository.save(tournament1);
-
-//        Date scoreTime1 = new GregorianCalendar(2020, Calendar.AUGUST, 30).getTime();
-//        Date scoreTime2 = new GregorianCalendar(2020, Calendar.AUGUST, 30).getTime();
-//        Date scoreTime3 = new GregorianCalendar(2020, Calendar.AUGUST, 30).getTime();
-//        Date scoreTime4 = new GregorianCalendar(2020, Calendar.AUGUST, 30).getTime();
+        personRepository.save(person5);
+        personRepository.save(person6);
+        personRepository.save(person7);
+        personRepository.save(person8);
+        personRepository.save(person9);
+        personRepository.save(person10);
 
 
-        TeamMatch teamMatch1 = new TeamMatch(team1, team2, venue1, tournament1);
+        Team arsenal = new Team("Arsenal", "ARS", new Venue("Highbury"));
+        Team manchester = new Team("Manchester", "MAN", new Venue("Old Trafford"));
+        Team chelsea = new Team("Chelsea", "CHE", new Venue("Wembley"));
+        Team rangers = new Team("Glasgow Rangers", "GLA",  new Venue("Ibrox Stadium"));
+        Team spurs = new Team("Tottenham Hotspur", "TOT",  new Venue("White Hart Lane"));
+        Team hibs = new Team("Hibernians", "HIB",  new Venue("White Hart Lane"));
+
+        arsenal.addPlayer(person1);
+        arsenal.addPlayer(person2);
+        manchester.addPlayer(person3);
+        manchester.addPlayer(person4);
+        chelsea.addPlayer(person5);
+        chelsea.addPlayer(person6);
+        rangers.addPlayer(person7);
+        rangers.addPlayer(person8);
+        spurs.addPlayer(person9);
+        hibs.addPlayer(person10);
+        teamRepository.save(arsenal);
+        teamRepository.save(manchester);
+        teamRepository.save(chelsea);
+        teamRepository.save(rangers);
+        teamRepository.save(spurs);
+        teamRepository.save(hibs);
+        //Tournament / Matches
+        Tournament premierLeague = new Tournament(new Sport("football"), "Premier League");
+        premierLeague.addTeam(arsenal);
+        premierLeague.addTeam(manchester);
+        premierLeague.addTeam(chelsea);
+        premierLeague.addTeam(rangers);
+        premierLeague.addTeam(spurs);
+        tournamentRepository.save(premierLeague);
+
+
+        TeamMatch teamMatch1 = new TeamMatch(arsenal, manchester, arsenal.getVenue(), premierLeague);
+        TeamMatch teamMatch2 = new TeamMatch(chelsea, rangers, chelsea.getVenue(), premierLeague);
+        TeamMatch teamMatch3 = new TeamMatch(spurs, hibs, spurs.getVenue(), premierLeague);
         teamMatchRepository.save(teamMatch1);
-        tournament1.addMatch(teamMatch1);
+        teamMatchRepository.save(teamMatch2);
+        teamMatchRepository.save(teamMatch3);
 
+//        premierLeague.addMatch(teamMatch1);
+
+        //PLAYER NUMBERS:  1,2:arsenal, 3,4:manchester, 5,6:chelsea, 7,8:rangers, 9:spurs, 10:hibs
         ScoreEvent scoreEvent1 = new ScoreEvent(person1, 1, 20, teamMatch1);
-        ScoreEvent scoreEvent2 = new ScoreEvent(person4, 1, 31, teamMatch1);
-        ScoreEvent scoreEvent3 = new ScoreEvent(person3, 1, 76, teamMatch1);
-        ScoreEvent scoreEvent4 = new ScoreEvent(person4, 1, 89, teamMatch1);
-
-
+        ScoreEvent scoreEvent2 = new ScoreEvent(person5, 1, 60, teamMatch2);
+        ScoreEvent scoreEvent3 = new ScoreEvent(person10, 1, 40, teamMatch3);
         scoreEventRepository.save(scoreEvent1);
         scoreEventRepository.save(scoreEvent2);
         scoreEventRepository.save(scoreEvent3);
-        scoreEventRepository.save(scoreEvent4);
         teamMatch1.addScoreEvent(scoreEvent1);
-        teamMatch1.addScoreEvent(scoreEvent2);
-        teamMatch1.addScoreEvent(scoreEvent3);
-        teamMatch1.addScoreEvent(scoreEvent4);
+        teamMatch2.addScoreEvent(scoreEvent2);
+        teamMatch3.addScoreEvent(scoreEvent3);
         teamMatchRepository.save(teamMatch1);
-        teamMatch1.setCompleted(true);
-        teamMatchRepository.save(teamMatch1);
-
-        Country country1 = new Country("England");
-        Country country2 = new Country("France");
-        Country country3 = new Country("Spain");
-        Country country4 = new Country("Italy");
-        countryRepository.save(country1);
-        countryRepository.save(country2);
-        countryRepository.save(country3);
-        countryRepository.save(country4);
+        teamMatchRepository.save(teamMatch2);
+        teamMatchRepository.save(teamMatch3);
+        //SCORES: arsenal-manchester 1-0,  chelsea-rangers 1-0, spurs-hibs 0-1
 
 
-        // nhl
-        Date date20 = new GregorianCalendar(1995, Calendar.FEBRUARY, 25).getTime();
-        Date date21 = new GregorianCalendar(1997, Calendar.JUNE, 20).getTime();
 
-        Person person20 = new Person("Marian", "Hossa", date20, "Slovakia");
-        Person person21 = new Person("Auston", "Matthews", date21, "Canada");
-        personRepository.save(person20);
-        personRepository.save(person21);
-        Venue venue20 = new Venue("Wells Fargo Center");
-        Venue venue21 = new Venue("Air Canada Centre");
-        venueRepository.save(venue20);
-        venueRepository.save(venue21);
 
-        Team team20 = new Team("Philadelphia", "PHI", venue20);
-        Team team21= new Team("Toronto", "TOR", venue21);
-        team20.addPlayer(person20);
-        team21.addPlayer(person21);
-        teamRepository.save(team20);
-        teamRepository.save(team21);
 
-        Tournament tournament2 = new Tournament(sport4, "NHL");
-        tournament2.addTeam(team20);
-        tournament2.addTeam(team21);
-        tournamentRepository.save(tournament2);
+//        Sport sport1 = new Sport("football");
+//        Sport sport2 = new Sport("basketball");
+//        Sport sport3 = new Sport("rugby");
+//        Sport sport4 = new Sport("ice hockey");
+//        sportRepository.save(sport1);
+//        sportRepository.save(sport2);
+//        sportRepository.save(sport3);
+//        sportRepository.save(sport4);
+
+//        Venue venue1 = new Venue("Highbury");
+//        Venue venue2 = new Venue("Old Trafford");
+//        Venue venue3 = new Venue("Wembley");
+//        Venue venue4 = new Venue("Ibrox Stadium");
+//        venueRepository.save(venue1);
+//        venueRepository.save(venue2);
+//        venueRepository.save(venue3);
+//        venueRepository.save(venue4);
+
+//        Country country1 = new Country("England");
+//        Country country2 = new Country("France");
+//        Country country3 = new Country("Spain");
+//        Country country4 = new Country("Italy");
+//        countryRepository.save(country1);
+//        countryRepository.save(country2);
+//        countryRepository.save(country3);
+//        countryRepository.save(country4);
 
     }
 

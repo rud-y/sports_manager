@@ -26,7 +26,7 @@ public class TeamMatchTest {
     @Before
     public void before() {
         date = new GregorianCalendar(1991, Calendar.AUGUST, 8).getTime();
-        person1 = new Person("Jude", "Bellingham", date, "England");
+        person1 = new Person("Jude", "Bellingham", date, new Country("England"));
         sport1 = new Sport("football");
         tournament1 = new Tournament(sport1, "PremierLeague");
         teamMatch1 = new TeamMatch(team1, team2, venue1, tournament1);
