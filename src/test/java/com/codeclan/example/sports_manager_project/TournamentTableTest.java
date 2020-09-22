@@ -21,6 +21,7 @@ public class TournamentTableTest {
     private Team team2;
     private Team team3;
     private Team team4;
+    private Team team5;
     private Venue venue1;
     private Venue venue2;
     private Venue venue3;
@@ -49,6 +50,7 @@ public class TournamentTableTest {
         team2 = new Team("Manchester United", "ManU", venue2);
         team3 = new Team("West Ham", "WHM", venue3);
         team4 = new Team("Milwall", "MIL", venue4);
+        team5 = new Team("Norwich", "NOR", new Venue("N stadium"));
         teamMatch1 = new TeamMatch(team1, team2, venue1, tournament1);
         teamMatch2 = new TeamMatch(team3, team4, venue3, tournament1);
         matches = new ArrayList<>();
@@ -62,6 +64,15 @@ public class TournamentTableTest {
         assertEquals(4, tournamentTable1.getRecords().size());
     }
 
+    @Test
+    public void checkIfHasRecord_false () {
+        assertEquals(false , tournamentTable1.hasRecord(team5));
+    }
+
+    @Test
+    public void checkIfHasRecord_true () {
+        assertEquals(true , tournamentTable1.hasRecord(team1));
+    }
 
 
 

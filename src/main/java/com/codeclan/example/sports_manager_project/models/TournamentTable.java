@@ -40,10 +40,10 @@ public class TournamentTable {
     }
 
     private void processMatch(TeamMatch match) {
-        if (isNotInTable(match.getTeam1())) {
+        if (!hasRecord(match.getTeam1())) {
             createRecord(match.getTeam1());
         }
-        if (isNotInTable(match.getTeam2())) {
+        if (!hasRecord(match.getTeam2())) {
             createRecord(match.getTeam2());
         }
         if(match.isDraw()) {
@@ -59,8 +59,8 @@ public class TournamentTable {
         this.records.get(match.getTeam2()).addAgainst(match.getScore1());
     }
 
-    public Boolean isNotInTable (Team team) {
-        return !records.containsKey(team);
+    public Boolean hasRecord (Team team) {
+        return records.containsKey(team);
     }
 
     public void createRecord(Team team) {

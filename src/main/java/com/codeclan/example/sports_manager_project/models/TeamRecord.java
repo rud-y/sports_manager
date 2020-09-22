@@ -25,16 +25,16 @@ public class TeamRecord {
     @Column
     private int scoreAgainst;
 
-
-    public TeamRecord(int wins, int draws, int losses, int scoreFor, int scoreAgainst) {
-        this.wins = wins;
-        this.draws = draws;
-        this.losses = losses;
-        this.scoreFor = scoreFor;
-        this.scoreAgainst = scoreAgainst;
+//
+    public TeamRecord() {
+        this.wins = 0;
+        this.draws = 0;
+        this.losses = 0;
+        this.scoreFor = 0;
+        this.scoreAgainst = 0;
     }
 
-    public TeamRecord() {}
+//    public TeamRecord() {}
 
     public Long getId() {
         return Id;
