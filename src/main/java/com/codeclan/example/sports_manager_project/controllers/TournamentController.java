@@ -26,6 +26,7 @@ public class TournamentController {
         return new ResponseEntity<>(tournamentRepository.findAll(), HttpStatus.OK);
     }
 
+
     @GetMapping(value = "/tournaments/{id}")
     public ResponseEntity getTournament(@PathVariable Long id) {
         return new ResponseEntity<>(tournamentRepository.findById(id), HttpStatus.OK);

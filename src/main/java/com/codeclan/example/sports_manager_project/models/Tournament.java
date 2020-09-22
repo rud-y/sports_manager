@@ -42,6 +42,12 @@ public class Tournament {
     public Tournament() {
     }
 
+    public TournamentTable generateTable() {
+        TournamentTable table = new TournamentTable(this.matches);
+        return table;
+    }
+
+
     public void addTeam(Team team) {
         this.teams.add(team);
     }

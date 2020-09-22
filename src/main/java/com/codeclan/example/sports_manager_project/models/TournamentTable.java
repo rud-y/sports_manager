@@ -6,6 +6,7 @@ import org.hibernate.annotations.Cascade;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 @Entity
 @Table(name = "tables")
@@ -17,15 +18,53 @@ public class TournamentTable {
 
     @OneToMany(mappedBy = "tournamentTable")
     @JsonBackReference
-    private ArrayList<TeamMatch> matches;
+    private List<TeamMatch> matches;
 
     @OneToMany(mappedBy = "tournamentTable")
     @JsonBackReference
     private HashMap<Team, TeamRecord> records;
 
-    public TournamentTable(ArrayList<TeamMatch> matches, HashMap<Team, TeamRecord> records) {
+    public TournamentTable(List<TeamMatch> matches) {
         this.matches = matches;
-        this.records = records;
+        this.records = new HashMap<>();
+    }
+
+    public TournamentTable() {}
+
+    // !!!
+    public HashMap<Team, TeamRecord> getRecords() {
+        for(TeamMatch match: matches) {
+            processMatch(match);
+        }
+        return this.records;
+    }
+
+    public void processMatch(TeamMatch match) {
+        if (isNotInTable(match.getTeam1())) {
+            createRecord(match.getTeam1());
+        }
+        if (isNotInTable(match.getTeam2())) {
+            createRecord(match.getTeam2());
+        }
+        if(match.isDraw()) {
+            this.records.get(match.getTeam1()).addDraw();
+            this.records.get(match.getTeam2()).addDraw();
+        } else {
+            this.records.get(match.getWinner()).addWin();
+            this.records.get(match.getLoser()).addLoss();
+        }
+        this.records.get(match.getTeam1()).addFor(match.getScore1());
+        this.records.get(match.getTeam1()).addAgainst(match.getScore2());
+        this.records.get(match.getTeam2()).addFor(match.getScore2());
+        this.records.get(match.getTeam2()).addAgainst(match.getScore1());
+    }
+
+    public Boolean isNotInTable (Team team) {
+        return !records.containsKey(team);
+    }
+
+    public void createRecord(Team team) {
+        records.put(team, new TeamRecord());
     }
 
 

@@ -45,6 +45,10 @@ public class TeamMatch {
     @Column
     private Boolean completed;
 
+//    @ManyToOne
+//    @JoinColumn(name = "tournamentTable_id")
+//    private TournamentTable tournamentTable;
+
 
     public TeamMatch(Team team1, Team team2, Venue venue, Tournament tournament) {
         this.team1 = team1;

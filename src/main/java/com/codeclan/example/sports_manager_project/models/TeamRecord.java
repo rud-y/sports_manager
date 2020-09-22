@@ -17,20 +17,21 @@ public class TeamRecord {
     private int draws;
 
     @Column
-    private int loses;
+    private int losses;
 
     @Column
-    private int goalsFor;
+    private int scoreFor;
 
     @Column
-    private int goalsAgainst;
+    private int scoreAgainst;
 
-    public TeamRecord(int wins, int draws, int loses, int goalsFor, int goalsAgainst) {
+
+    public TeamRecord(int wins, int draws, int losses, int scoreFor, int scoreAgainst) {
         this.wins = wins;
         this.draws = draws;
-        this.loses = loses;
-        this.goalsFor = goalsFor;
-        this.goalsAgainst = goalsAgainst;
+        this.losses = losses;
+        this.scoreFor = scoreFor;
+        this.scoreAgainst = scoreAgainst;
     }
 
     public TeamRecord() {}
@@ -42,6 +43,24 @@ public class TeamRecord {
     public void setId(Long id) {
         Id = id;
     }
+
+    public void addWin() {
+        this.wins += 1;
+    }
+    public void addLoss() {
+        this.losses += 1;
+    }
+    public void addDraw() {
+        this.draws += 1;
+    }
+    public void addFor(int score) {
+        this.scoreFor += score;
+    }
+    public void addAgainst(int score) {
+        this.scoreAgainst += score;
+    }
+
+
 
     public int getWins() {
         return wins;
@@ -60,26 +79,26 @@ public class TeamRecord {
     }
 
     public int getLoses() {
-        return loses;
+        return losses;
     }
 
     public void setLoses(int loses) {
-        this.loses = loses;
+        this.losses = loses;
     }
 
-    public int getGoalsFor() {
-        return goalsFor;
+    public int getScoreFor() {
+        return scoreFor;
     }
 
-    public void setGoalsFor(int goalsFor) {
-        this.goalsFor = goalsFor;
+    public void setScoreFor(int scoreFor) {
+        this.scoreFor = scoreFor;
     }
 
-    public int getGoalsAgainst() {
-        return goalsAgainst;
+    public int getScoreAgainst() {
+        return scoreAgainst;
     }
 
-    public void setGoalsAgainst(int goalsAgainst) {
-        this.goalsAgainst = goalsAgainst;
+    public void setScoreAgainst(int scoreAgainst) {
+        this.scoreAgainst = scoreAgainst;
     }
 }
