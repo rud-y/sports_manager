@@ -2,30 +2,15 @@ package com.codeclan.example.sports_manager_project.models;
 
 import javax.persistence.*;
 
-@Entity
-
 public class TeamRecord {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
-
-    @Column
     private int wins;
-
-    @Column
     private int draws;
-
-    @Column
     private int losses;
-
-    @Column
     private int scoreFor;
-
-    @Column
     private int scoreAgainst;
 
-//
     public TeamRecord() {
         this.wins = 0;
         this.draws = 0;
@@ -33,8 +18,6 @@ public class TeamRecord {
         this.scoreFor = 0;
         this.scoreAgainst = 0;
     }
-
-//    public TeamRecord() {}
 
     public Long getId() {
         return Id;

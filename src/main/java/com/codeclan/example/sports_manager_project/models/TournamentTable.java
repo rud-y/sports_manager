@@ -8,20 +8,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-@Entity
-@Table(name = "tables")
 public class TournamentTable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "tournamentTable")
-    @JsonBackReference
     private List<TeamMatch> matches;
 
-    @OneToMany(mappedBy = "tournamentTable")
-    @JsonBackReference
     private HashMap<Team, TeamRecord> records;
 
     public TournamentTable(List<TeamMatch> matches) {
@@ -29,9 +21,6 @@ public class TournamentTable {
         this.records = new HashMap<>();
     }
 
-    public TournamentTable() {}
-
-    // !!!
     public HashMap<Team, TeamRecord> getRecords() {
         for(TeamMatch match: matches) {
             processMatch(match);
@@ -66,6 +55,5 @@ public class TournamentTable {
     public void createRecord(Team team) {
         records.put(team, new TeamRecord());
     }
-
 
 }
