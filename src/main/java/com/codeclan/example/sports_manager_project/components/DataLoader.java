@@ -97,9 +97,9 @@ public class DataLoader implements ApplicationRunner {
         tournamentRepository.save(premierLeague);
 
 
-        TeamMatch teamMatch1 = new TeamMatch(arsenal, manchester, arsenal.getVenue(), premierLeague);
-        TeamMatch teamMatch2 = new TeamMatch(chelsea, rangers, chelsea.getVenue(), premierLeague);
-        TeamMatch teamMatch3 = new TeamMatch(spurs, hibs, spurs.getVenue(), premierLeague);
+        TeamMatch teamMatch1 = new TeamMatch(arsenal, manchester, arsenal.getVenue());
+        TeamMatch teamMatch2 = new TeamMatch(chelsea, rangers, chelsea.getVenue());
+        TeamMatch teamMatch3 = new TeamMatch(spurs, hibs, spurs.getVenue());
         teamMatchRepository.save(teamMatch1);
         teamMatchRepository.save(teamMatch2);
         teamMatchRepository.save(teamMatch3);
