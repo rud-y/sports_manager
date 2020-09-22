@@ -39,7 +39,7 @@ public class TournamentTable {
         return this.records;
     }
 
-    public void processMatch(TeamMatch match) {
+    private void processMatch(TeamMatch match) {
         if (isNotInTable(match.getTeam1())) {
             createRecord(match.getTeam1());
         }
