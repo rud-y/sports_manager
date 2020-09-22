@@ -84,6 +84,21 @@ public class TournamentTableTest {
         assertEquals(1, tournamentTable1.getRecords().get(team1).getWins());
     }
 
+    @Test
+    public void canGetDraw() {
+        assertEquals(1, tournamentTable1.getRecords().get(team3).getDraws());
+    }
+
+    @Test
+    public void canGetLoss() {
+        assertEquals(1, tournamentTable1.getRecords().get(team2).getLosses());
+    }
+
+    @Test
+    public void canGetScoresAgainst(){
+        assertEquals(2, tournamentTable1.getRecords().get(team2).getScoreAgainst());
+    }
+
 
 
     }
