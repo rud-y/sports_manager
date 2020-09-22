@@ -34,6 +34,7 @@ public class PersonController {
         personRepository.save(person);
         return new ResponseEntity<>(person, HttpStatus.CREATED);
     }
+
     @PutMapping(value = "/people/{id}")
     public ResponseEntity<Person> updatePerson(@RequestBody Person person) {
         personRepository.save(person);

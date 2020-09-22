@@ -37,6 +37,7 @@ public class DataLoader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
+        //countries
         Country can = new Country("Canada");
         Country eng = new Country("England");
         Country fra = new Country("France");
@@ -52,14 +53,23 @@ public class DataLoader implements ApplicationRunner {
             countryRepository.save(country);
         }
 
+        //sports
+        Sport basketball = new Sport("Basketball");
+        Sport football = new Sport("Football");
+        Sport iceHockey = new Sport("Ice Hockey");
+        Sport rugbyLeague = new Sport("Rugby League");
+        Sport rugbyUnion = new Sport("Rugby Union");
+        Sport[] sports = {basketball, football, iceHockey, rugbyLeague, rugbyUnion};
+        for (Sport sport: sports) {
+            sportRepository.save(sport);
+        }
+
         //premiership
 
         Date date = new GregorianCalendar(1991, Calendar.AUGUST, 8).getTime();
         Date date2 = new GregorianCalendar(1983, Calendar.DECEMBER, 12).getTime();
         Date date3 = new GregorianCalendar(1989, Calendar.FEBRUARY, 2).getTime();
         Date date4 = new GregorianCalendar(1997, Calendar.JUNE, 6).getTime();
-
-
 
         Person person1 = new Person("Jude", "Bellingham", date, eng );
         Person person2 = new Person("Jurgen", "Klinsmann", date2, ger);
@@ -69,15 +79,6 @@ public class DataLoader implements ApplicationRunner {
         personRepository.save(person2);
         personRepository.save(person3);
         personRepository.save(person4);
-
-        Sport sport1 = new Sport("football");
-        Sport sport2 = new Sport("basketball");
-        Sport sport3 = new Sport("rugby");
-        Sport sport4 = new Sport("ice hockey");
-        sportRepository.save(sport1);
-        sportRepository.save(sport2);
-        sportRepository.save(sport3);
-        sportRepository.save(sport4);
 
         Venue venue1 = new Venue("Highbury");
         Venue venue2 = new Venue("Old Trafford");
@@ -101,11 +102,11 @@ public class DataLoader implements ApplicationRunner {
         teamRepository.save(team3);
         teamRepository.save(team4);
 
-        Tournament tournament1 = new Tournament(sport1, "PremierLeague");
-        tournament1.addTeam(team1);
-        tournament1.addTeam(team2);
-        tournament1.addTeam(team3);
-        tournament1.addTeam(team4);
+        Tournament tournament1 = new Tournament("Premier League", football);
+//        tournament1.addTeam(team1);
+//        tournament1.addTeam(team2);
+//        tournament1.addTeam(team3);
+//        tournament1.addTeam(team4);
         tournamentRepository.save(tournament1);
 
 //        Date scoreTime1 = new GregorianCalendar(2020, Calendar.AUGUST, 30).getTime();
@@ -113,10 +114,9 @@ public class DataLoader implements ApplicationRunner {
 //        Date scoreTime3 = new GregorianCalendar(2020, Calendar.AUGUST, 30).getTime();
 //        Date scoreTime4 = new GregorianCalendar(2020, Calendar.AUGUST, 30).getTime();
 
-
         TeamMatch teamMatch1 = new TeamMatch(team1, team2, venue1, tournament1);
         teamMatchRepository.save(teamMatch1);
-        tournament1.addMatch(teamMatch1);
+//        tournament1.addMatch(teamMatch1);
 
         ScoreEvent scoreEvent1 = new ScoreEvent(person1, 1, 20, teamMatch1);
         ScoreEvent scoreEvent2 = new ScoreEvent(person4, 1, 31, teamMatch1);
@@ -157,9 +157,9 @@ public class DataLoader implements ApplicationRunner {
         teamRepository.save(team20);
         teamRepository.save(team21);
 
-        Tournament tournament2 = new Tournament(sport4, "NHL");
-        tournament2.addTeam(team20);
-        tournament2.addTeam(team21);
+        Tournament tournament2 = new Tournament("NHL", iceHockey);
+//        tournament2.addTeam(team20);
+//        tournament2.addTeam(team21);
         tournamentRepository.save(tournament2);
 
     }

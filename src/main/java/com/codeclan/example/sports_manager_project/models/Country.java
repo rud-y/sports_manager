@@ -16,7 +16,6 @@ public class Country {
     public Country(String name) {
         this.name = name;
     }
-
     public Country(){}
 
     public Long getId() {

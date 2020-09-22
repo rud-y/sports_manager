@@ -2,6 +2,7 @@ package com.codeclan.example.sports_manager_project.controllers;
 
 import com.codeclan.example.sports_manager_project.models.Tournament;
 import com.codeclan.example.sports_manager_project.models.Tournament;
+import com.codeclan.example.sports_manager_project.models.Venue;
 import com.codeclan.example.sports_manager_project.repositories.TournamentRepository;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,9 @@ public class TournamentController {
     @GetMapping(value = "/tournaments")
     public ResponseEntity<List<Tournament>> getAllTournaments (
             @RequestParam(name = "team", required = false) String team) {
-        if(team != null) {
-            return new ResponseEntity<>(tournamentRepository.findByTeamsName(team), HttpStatus.OK);
-        }
+//        if(team != null) {
+//            return new ResponseEntity<>(tournamentRepository.findByTeamsName(team), HttpStatus.OK);
+//        }
         return new ResponseEntity<>(tournamentRepository.findAll(), HttpStatus.OK);
     }
 
@@ -37,6 +38,7 @@ public class TournamentController {
         tournamentRepository.save(tournament);
         return new ResponseEntity<>(tournament, HttpStatus.CREATED);
     }
+
     @PutMapping(value = "/tournaments/{id}")
     public ResponseEntity<Tournament> updateTournament(@RequestBody Tournament tournament) {
         tournamentRepository.save(tournament);

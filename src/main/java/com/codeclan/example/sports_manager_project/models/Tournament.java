@@ -13,63 +13,55 @@ public class Tournament {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne()
-    @JoinColumn(name = "tournament_id")
-    private Sport sport;
-
     @Column
     private String name;
 
-    @ManyToMany
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @JoinTable(
-            name = "tournaments_teams",
-            joinColumns = {@JoinColumn(name = "tournament_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "team_id", nullable = false, updatable = false)}
-    )
-    private List<Team> teams;
+    @ManyToOne
+    @JoinColumn(name = "sport_id", nullable = false)
+    @JsonIgnoreProperties({"tournaments"})
+    private Sport sport;
 
-    @OneToMany(mappedBy = "tournament")
-    @JsonIgnoreProperties({"tournament"})
-    private List<TeamMatch> matches;
+//    @ManyToMany
+//    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+//    @JoinTable(
+//            name = "tournaments_teams",
+//            joinColumns = {@JoinColumn(name = "tournament_id", nullable = false, updatable = false)},
+//            inverseJoinColumns = {@JoinColumn(name = "team_id", nullable = false, updatable = false)}
+//    )
+//    private List<Team> teams;
+//
+//    @OneToMany(mappedBy = "tournament")
+//    @JsonIgnoreProperties({"tournament"})
+//    private List<TeamMatch> matches;
 
-
-    public Tournament(Sport sport, String name) {
-        this.sport = sport;
+    public Tournament(String name, Sport sport) {
         this.name = name;
-        this.teams = new ArrayList<>();
-        this.matches = new ArrayList<>();
+        this.sport = sport;
+//        this.teams = new ArrayList<>();
+//        this.matches = new ArrayList<>();
     }
     public Tournament() {
     }
 
-    public TournamentTable generateTable() {
-        TournamentTable table = new TournamentTable(this.matches);
-        table.calculate();
-        return table;
-    }
-
-    public void addTeam(Team team) {
-        this.teams.add(team);
-    }
-    public void addMatch(TeamMatch match) {
-        this.matches.add(match);
-    }
-
+//    public TournamentTable generateTable() {
+//        TournamentTable table = new TournamentTable(this.matches);
+//        table.calculate();
+//        return table;
+//    }
+//
+//    public void addTeam(Team team) {
+//        this.teams.add(team);
+//    }
+//    public void addMatch(TeamMatch match) {
+//        this.matches.add(match);
+//    }
+//
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Sport getSport() {
-        return sport;
-    }
-
-    public void setSport(Sport sport) {
-        this.sport = sport;
     }
 
     public String getName() {
@@ -80,19 +72,27 @@ public class Tournament {
         this.name = name;
     }
 
-    public List<Team> getTeams() {
-        return teams;
+    public Sport getSport() {
+        return sport;
     }
 
-    public void setTeams(List<Team> teams) {
-        this.teams = teams;
+    public void setSport(Sport sport) {
+        this.sport = sport;
     }
 
-    public List<TeamMatch> getMatches() {
-        return matches;
-    }
-
-    public void setMatches(List<TeamMatch> matches) {
-        this.matches = matches;
-    }
+//    public List<Team> getTeams() {
+//        return teams;
+//    }
+//
+//    public void setTeams(List<Team> teams) {
+//        this.teams = teams;
+//    }
+//
+//    public List<TeamMatch> getMatches() {
+//        return matches;
+//    }
+//
+//    public void setMatches(List<TeamMatch> matches) {
+//        this.matches = matches;
+//    }
 }
