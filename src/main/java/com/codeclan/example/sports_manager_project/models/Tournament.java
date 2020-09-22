@@ -31,16 +31,9 @@ public class Tournament {
     )
     private List<Team> teams;
 
-//    @JsonBackReference
     @OneToMany(mappedBy = "tournament")//
-//    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     @JsonIgnoreProperties({"tournament"})
     private List<TeamMatch> matches;
-
-//    @JsonBackReference
-//    @OneToMany(mappedBy = "teamMatch", fetch = FetchType.LAZY)
-//    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
-//    private List<ScoreEvent> scoreEvents;
 
     public Tournament(String name, Sport sport) {
         this.name = name;
@@ -51,19 +44,19 @@ public class Tournament {
     public Tournament() {
     }
 
-//    public TournamentTable generateTable() {
-//        TournamentTable table = new TournamentTable(this.matches);
-//        table.calculate();
-//        return table;
-//    }
-//
-//    public void addTeam(Team team) {
-//        this.teams.add(team);
-//    }
-//    public void addMatch(TeamMatch match) {
-//        this.matches.add(match);
-//    }
-//
+    public TournamentTable generateTable() {
+        TournamentTable table = new TournamentTable(this.matches);
+        table.calculate();
+        return table;
+    }
+
+    public void addTeam(Team team) {
+        this.teams.add(team);
+    }
+    public void addMatch(TeamMatch match) {
+        this.matches.add(match);
+    }
+
     public Long getId() {
         return id;
     }
