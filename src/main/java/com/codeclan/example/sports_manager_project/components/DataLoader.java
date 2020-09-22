@@ -114,7 +114,7 @@ public class DataLoader implements ApplicationRunner {
 //        Date scoreTime3 = new GregorianCalendar(2020, Calendar.AUGUST, 30).getTime();
 //        Date scoreTime4 = new GregorianCalendar(2020, Calendar.AUGUST, 30).getTime();
 
-        TeamMatch teamMatch1 = new TeamMatch(team1, team2, venue1, tournament1);
+        TeamMatch teamMatch1 = new TeamMatch(team1, team2, venue1);
         teamMatchRepository.save(teamMatch1);
 //        tournament1.addMatch(teamMatch1);
 
@@ -122,7 +122,6 @@ public class DataLoader implements ApplicationRunner {
         ScoreEvent scoreEvent2 = new ScoreEvent(person4, 1, 31, teamMatch1);
         ScoreEvent scoreEvent3 = new ScoreEvent(person3, 1, 76, teamMatch1);
         ScoreEvent scoreEvent4 = new ScoreEvent(person4, 1, 89, teamMatch1);
-
 
         scoreEventRepository.save(scoreEvent1);
         scoreEventRepository.save(scoreEvent2);

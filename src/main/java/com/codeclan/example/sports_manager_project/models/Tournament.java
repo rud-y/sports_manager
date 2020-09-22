@@ -1,4 +1,5 @@
 package com.codeclan.example.sports_manager_project.models;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cascade;
 import javax.persistence.*;
@@ -21,24 +22,31 @@ public class Tournament {
     @JsonIgnoreProperties({"tournaments"})
     private Sport sport;
 
-//    @ManyToMany
-//    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-//    @JoinTable(
-//            name = "tournaments_teams",
-//            joinColumns = {@JoinColumn(name = "tournament_id", nullable = false, updatable = false)},
-//            inverseJoinColumns = {@JoinColumn(name = "team_id", nullable = false, updatable = false)}
-//    )
-//    private List<Team> teams;
-//
-//    @OneToMany(mappedBy = "tournament")
-//    @JsonIgnoreProperties({"tournament"})
-//    private List<TeamMatch> matches;
+    @ManyToMany
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JoinTable(
+            name = "tournaments_teams",
+            joinColumns = {@JoinColumn(name = "tournament_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "team_id", nullable = false, updatable = false)}
+    )
+    private List<Team> teams;
+
+//    @JsonBackReference
+    @OneToMany(mappedBy = "tournament")//
+//    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
+    @JsonIgnoreProperties({"tournament"})
+    private List<TeamMatch> matches;
+
+//    @JsonBackReference
+//    @OneToMany(mappedBy = "teamMatch", fetch = FetchType.LAZY)
+//    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
+//    private List<ScoreEvent> scoreEvents;
 
     public Tournament(String name, Sport sport) {
         this.name = name;
         this.sport = sport;
-//        this.teams = new ArrayList<>();
-//        this.matches = new ArrayList<>();
+        this.teams = new ArrayList<>();
+        this.matches = new ArrayList<>();
     }
     public Tournament() {
     }
@@ -80,19 +88,19 @@ public class Tournament {
         this.sport = sport;
     }
 
-//    public List<Team> getTeams() {
-//        return teams;
-//    }
-//
-//    public void setTeams(List<Team> teams) {
-//        this.teams = teams;
-//    }
-//
-//    public List<TeamMatch> getMatches() {
-//        return matches;
-//    }
-//
-//    public void setMatches(List<TeamMatch> matches) {
-//        this.matches = matches;
-//    }
+    public List<Team> getTeams() {
+        return teams;
+    }
+
+    public void setTeams(List<Team> teams) {
+        this.teams = teams;
+    }
+
+    public List<TeamMatch> getMatches() {
+        return matches;
+    }
+
+    public void setMatches(List<TeamMatch> matches) {
+        this.matches = matches;
+    }
 }

@@ -21,9 +21,9 @@ public class ScoreEventController {
     public ResponseEntity<List<ScoreEvent>> getAllScoreEvents(
 //            @RequestParam(name = "player", required = false) String player,
             @RequestParam(name = "person", required = false) Long personId) {
-        if(personId != null) {
-            return new ResponseEntity<>(scoreEventRepository.findByPersonId(personId),HttpStatus.OK);
-        }
+//        if(personId != null) {
+//            return new ResponseEntity<>(scoreEventRepository.findByPersonId(personId),HttpStatus.OK);
+//        }
 //        if(player != null){
 //            return new ResponseEntity<>(scoreEventRepository.findByPersonLastName(player), HttpStatus.OK);
 //        }
