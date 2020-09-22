@@ -13,7 +13,6 @@ public class TournamentTable {
     private Long id;
 
     private List<TeamMatch> matches;
-
     private HashMap<Team, TeamRecord> records;
 
     public TournamentTable(List<TeamMatch> matches) {
@@ -22,10 +21,13 @@ public class TournamentTable {
     }
 
     public HashMap<Team, TeamRecord> getRecords() {
+        return records;
+    }
+
+    public void calculate() {
         for(TeamMatch match: matches) {
             processMatch(match);
         }
-        return this.records;
     }
 
     private void processMatch(TeamMatch match) {
@@ -48,11 +50,11 @@ public class TournamentTable {
         this.records.get(match.getTeam2()).addAgainst(match.getScore1());
     }
 
-    public Boolean hasRecord (Team team) {
-        return records.containsKey(team);
+    private Boolean hasRecord (Team team) {
+        return this.records.containsKey(team);
     }
 
-    public void createRecord(Team team) {
+    private void createRecord(Team team) {
         records.put(team, new TeamRecord());
     }
 

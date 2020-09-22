@@ -10,7 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class TournamentTableTest {
 
@@ -61,19 +61,16 @@ public class TournamentTableTest {
 
     @Test
     public void canGetRecords() {
-
         assertEquals(4, tournamentTable1.getRecords().size());
     }
 
     @Test
-    public void checkIfHasRecord_false() {
-        assertEquals(false, tournamentTable1.hasRecord(team5));
+    public void canGetRecordKeys() {
+        assertTrue(tournamentTable1.getRecords().containsKey(team1));
     }
 
-    @Test
-    public void checkIfHasRecord_true() {
-        assertEquals(true, tournamentTable1.hasRecord(team1));
-    }
+
+
 }
 
 

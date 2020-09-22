@@ -44,6 +44,7 @@ public class Tournament {
 
     public TournamentTable generateTable() {
         TournamentTable table = new TournamentTable(this.matches);
+        table.calculate();
         return table;
     }
 

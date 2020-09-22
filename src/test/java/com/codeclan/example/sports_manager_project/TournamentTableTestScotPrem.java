@@ -35,18 +35,30 @@ public class TournamentTableTestScotPrem {
         match4 = new TeamMatch(hearts, rangers, hearts.getVenue(), scotPrem);
         match5 = new TeamMatch(rangers, hibs, rangers.getVenue(), scotPrem);
         match6 = new TeamMatch(hearts, celtic, hearts.getVenue(), scotPrem);
+        // Rangers 0, Celtic 0
         match1.setScore1(0);
         match1.setScore2(0);
+        // Hibs 6 Hearts 1
         match2.setScore1(6);
         match2.setScore2(1);
+        // Celtic 2 Hibs 2
         match3.setScore1(2);
         match3.setScore2(2);
+        // Hearts 2 Rangers 0
         match4.setScore1(2);
         match4.setScore2(0);
+        // Rangers 1 Hibs 2
         match5.setScore1(1);
         match5.setScore2(2);
+        // Hearts 3 Celtic 3
         match6.setScore1(3);
         match6.setScore2(3);
+        scotPrem.addMatch(match1);
+        scotPrem.addMatch(match2);
+        scotPrem.addMatch(match3);
+        scotPrem.addMatch(match4);
+        scotPrem.addMatch(match5);
+        scotPrem.addMatch(match6);
         table = scotPrem.generateTable();
         //        Hibs 2 1 0 10 4
         //        Hearts 1 1 1 6 9
@@ -71,6 +83,24 @@ public class TournamentTableTestScotPrem {
     }
 
     @Test
+    public void canGetCorrectDrawsHibs() {
+        assertEquals(1, table.getRecords().get(hibs).getDraws());
+    }
+
+    @Test
+    public void canGetCorrectDrawsHearts() {
+        assertEquals(1, table.getRecords().get(hearts).getDraws());
+    }
+    @Test
+    public void canGetCorrectDrawsCeltic() {
+        assertEquals(3, table.getRecords().get(celtic).getDraws());
+    }
+    @Test
+    public void canGetCorrectDrawsRangers() {
+        assertEquals(1, table.getRecords().get(rangers).getDraws());
+    }
+
+    @Test
     public void canGetCorrectLosses() {
         assertEquals(0, table.getRecords().get(hibs).getLosses());
         assertEquals(1, table.getRecords().get(hearts).getLosses());
@@ -88,10 +118,10 @@ public class TournamentTableTestScotPrem {
 
     @Test
     public void canGetCorrectAgainst() {
-        assertEquals(0, table.getRecords().get(hibs).getScoreAgainst());
-        assertEquals(1, table.getRecords().get(hearts).getScoreAgainst());
-        assertEquals(0, table.getRecords().get(celtic).getScoreAgainst());
-        assertEquals(2, table.getRecords().get(rangers).getScoreAgainst());
+        assertEquals(4, table.getRecords().get(hibs).getScoreAgainst());
+        assertEquals(9, table.getRecords().get(hearts).getScoreAgainst());
+        assertEquals(5, table.getRecords().get(celtic).getScoreAgainst());
+        assertEquals(4, table.getRecords().get(rangers).getScoreAgainst());
     }
 
 }
