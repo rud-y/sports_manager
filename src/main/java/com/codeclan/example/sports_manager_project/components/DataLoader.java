@@ -6,7 +6,6 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import java.lang.reflect.Array;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -67,6 +66,7 @@ public class DataLoader implements ApplicationRunner {
         //premiership
 
         Date date = new GregorianCalendar(1991, Calendar.AUGUST, 8).getTime();
+        Date date1 = new GregorianCalendar(1991, Calendar.AUGUST, 8).getTime();
         Date date2 = new GregorianCalendar(1983, Calendar.DECEMBER, 12).getTime();
         Date date3 = new GregorianCalendar(1989, Calendar.FEBRUARY, 2).getTime();
         Date date4 = new GregorianCalendar(1997, Calendar.JUNE, 6).getTime();
@@ -116,7 +116,7 @@ public class DataLoader implements ApplicationRunner {
 
         TeamMatch teamMatch1 = new TeamMatch(team1, team2, venue1);
         teamMatchRepository.save(teamMatch1);
-//        tournament1.addMatch(teamMatch1);
+        tournament1.addMatch(teamMatch1);
 
         ScoreEvent scoreEvent1 = new ScoreEvent(person1, 1, 20, teamMatch1);
         ScoreEvent scoreEvent2 = new ScoreEvent(person4, 1, 31, teamMatch1);
