@@ -38,6 +38,17 @@ public class TournamentTableRow implements Comparable<TournamentTableRow>{
 
     @Override
     public int compareTo(TournamentTableRow other) {
-        return other.points - this.points;
+        if (other.points != this.points) {
+            return other.points - this.points;
+        }
+        else if (other.getRecord().getDifference() != this.getRecord().getDifference()) {
+            return other.getRecord().getDifference() - this.getRecord().getDifference();
+        }
+        else if (other.getRecord().getScoreFor() != this.getRecord().getScoreAgainst()) {
+            return other.getRecord().getScoreFor() - this.getRecord().getScoreAgainst();
+        }
+        else {
+            return other.getRecord().getWinPercentage() - this.getRecord().getWinPercentage();
+        }
     }
 }

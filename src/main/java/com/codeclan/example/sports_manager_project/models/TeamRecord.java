@@ -84,4 +84,10 @@ public class TeamRecord {
     public void setScoreAgainst(int scoreAgainst) {
         this.scoreAgainst = scoreAgainst;
     }
+
+    public int getDifference() { return scoreFor - scoreAgainst; }
+
+    public int getPlayed() { return wins + draws + losses; }
+
+    public int getWinPercentage() { return wins / getPlayed() * 100;}
 }
