@@ -37,49 +37,66 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
 
         //countries
-//        Country can = new Country("Canada");
-//        Country eng = new Country("England");
-//        Country fra = new Country("France");
-//        Country ger = new Country("Germany");
-//        Country ita = new Country( "Italy");
-//        Country sco = new Country("Scotland");
-//        Country spa = new Country("Spain");
-//        Country slo = new Country("Slovakia");
-//        Country usa = new Country("USA");
-//        Country wal = new Country("Wales");
-//        Country[] countries = {can, eng, fra, ger, ita, sco, spa, slo, usa, wal};
-//        for (Country country: countries){
-//            countryRepository.save(country);
-//        }
-//
-//        //sports
-//        Sport basketball = new Sport("Basketball");
+        Country can = new Country("Canada");
+        Country eng = new Country("England");
+        Country fra = new Country("France");
+        Country ger = new Country("Germany");
+        Country ita = new Country( "Italy");
+        Country sco = new Country("Scotland");
+        Country spa = new Country("Spain");
+        Country slo = new Country("Slovakia");
+        Country usa = new Country("USA");
+        Country wal = new Country("Wales");
+        Country[] countries = {can, eng, fra, ger, ita, sco, spa, slo, usa, wal};
+        for (Country country: countries){
+            countryRepository.save(country);
+        }
+
+        //sports
+        Sport basketball = new Sport("Basketball");
         Sport football = new Sport("Football");
-//        Sport iceHockey = new Sport("Ice Hockey");
-//////        Sport rugbyLeague = new Sport("Rugby League");
-//////        Sport rugbyUnion = new Sport("Rugby Union");
-//////        Sport[] sports = {basketball, football, iceHockey, rugbyLeague, rugbyUnion};
-//////        for (Sport sport: sports) {
-//////            sportRepository.save(sport);
-//////        }
+        Sport iceHockey = new Sport("Ice Hockey");
+        Sport rugbyLeague = new Sport("Rugby League");
+        Sport rugbyUnion = new Sport("Rugby Union");
+        Sport[] sports = {basketball, football, iceHockey, rugbyLeague, rugbyUnion};
+        for (Sport sport: sports) {
+            sportRepository.save(sport);
+        }
         sportRepository.save(football);
 
+        //ALPHABET LEAGUE
         //venues
-        Venue pisces = new Venue("Pisces Park");
-        Venue scorpio = new Venue("Scorpio Stadium");
-        Venue libra = new Venue("Libra Links");
+        Venue aquarius = new Venue("Aquarius Arena");
         Venue aries = new Venue("Aries Arena");
-        Venue[] venues = {pisces, scorpio, libra, aries};
+        Venue cancer = new Venue("Zodiac Zone ");
+        Venue capricorn = new Venue("Capricorn Crescent");
+        Venue gemini = new Venue("Gemini Ground");
+        Venue leo = new Venue("Leo Lane");
+        Venue libra = new Venue("Libra Links");
+        Venue pisces = new Venue("Pisces Park");
+        Venue sagittarius = new Venue("Sagittarius Street");
+        Venue scorpio = new Venue("Scorpio Stadium");
+        Venue taurus = new Venue("Taurus Towers");
+        Venue virgo = new Venue("Virgo View");
+        Venue[] venues = {aquarius, aries, cancer, capricorn, gemini, leo, libra, pisces, sagittarius, scorpio, taurus, virgo};
         for (Venue venue: venues) {
             venueRepository.save(venue);
         }
 
         //teams
-        Team alpha = new Team("Alpha United", "Alpha U", pisces);
-        Team beta = new Team("Beta City", "Beta C", scorpio);
-        Team gamma = new Team("Gamma Athletic", "Gamma A", libra);
-        Team delta = new Team("Delta Rovers", "Delta R", aries);
-        Team[] teams = {alpha, beta, gamma, delta};
+        Team alpha = new Team("Alphatown Alpacas", "Alpacas", aquarius);
+        Team beta = new Team("Betaville Beetles", "Beetles", aries);
+        Team gamma = new Team("Gammafield Gnus", "Gnus", cancer);
+        Team delta = new Team("Deltabridge Dolphins", "Dolphins", capricorn);
+        Team epsilon = new Team("Epsilon Elks", "Elks", gemini);
+        Team zeta = new Team("Zetavale Zebras", "Zebras", leo);
+        Team eta = new Team("Etaville Elephants", "Elephants", libra);
+        Team theta = new Team("Thetaby Terrapins", "Terrapins", pisces);
+        Team iota = new Team("Iota City Ibexes", "Ibexes", sagittarius);
+        Team kappa = new Team("Kappaford Koalas", "Koalas", scorpio);
+        Team lambda = new Team("Lambdabridge Llamas", "Llamas", taurus);
+        Team mu = new Team("Mucastle Molluscs", "Molluscs", virgo);
+        Team[] teams = {alpha, beta, gamma, delta, epsilon, zeta, eta, theta, iota, kappa, lambda, mu};
         for (Team team: teams) {
             teamRepository.save(team);
         }
@@ -93,29 +110,32 @@ public class DataLoader implements ApplicationRunner {
         alphabetLeague.addTeam(beta);
         alphabetLeague.addTeam(gamma);
         alphabetLeague.addTeam(delta);
+        alphabetLeague.addTeam(epsilon);
+        alphabetLeague.addTeam(zeta);
+        alphabetLeague.addTeam(eta);
+        alphabetLeague.addTeam(theta);
+        alphabetLeague.addTeam(iota);
+        alphabetLeague.addTeam(kappa);
+        alphabetLeague.addTeam(lambda);
+        alphabetLeague.addTeam(mu);
         tournamentRepository.save(alphabetLeague);
 
         //matches
         TeamMatch match1 = new TeamMatch(alpha, beta, alpha.getVenue(), alphabetLeague);
         match1.setScore1(2);
         match1.setScore2(1);
+        match1.setCompleted(true);
         teamMatchRepository.save(match1);
         TeamMatch match2 = new TeamMatch(gamma, delta, gamma.getVenue(), alphabetLeague);
         match2.setScore1(0);
         match2.setScore2(3);
+        match2.setCompleted(true);
         teamMatchRepository.save(match2);
         TeamMatch match3 = new TeamMatch(beta, gamma, beta.getVenue(), alphabetLeague);
         teamMatchRepository.save(match3);
         TeamMatch match4 = new TeamMatch(delta, alpha, delta.getVenue(), alphabetLeague);
         teamMatchRepository.save(match4);
 
-//        tournamentRepository.save(alphabetLeague);
-
-
-        //        TeamMatch[] teamMatches = {match1, match2};
-//        for (TeamMatch match: teamMatches) {
-//            teamMatchRepository.save(match);
-//        }
 
 
 
@@ -125,9 +145,7 @@ public class DataLoader implements ApplicationRunner {
 
 
 
-
-
-//        //premiership
+        //        //premiership
 //
 //        Date date = new GregorianCalendar(1991, Calendar.AUGUST, 8).getTime();
 //        Date date1 = new GregorianCalendar(1991, Calendar.AUGUST, 8).getTime();
