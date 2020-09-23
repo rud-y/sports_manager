@@ -61,7 +61,7 @@ public class TournamentTestScotPrem {
         // Hearts 3 Celtic 3
         match6.setScore1(3);
         match6.setScore2(3);
-        table = scotPrem.getTable();
+        table = scotPrem.generateTable();
         //        Hibs 2 1 0 10 4 7
         //        Hearts 1 1 1 6 9 4
         //        Celtic 0 3 0 5 5 3

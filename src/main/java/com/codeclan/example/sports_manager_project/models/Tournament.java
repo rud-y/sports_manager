@@ -53,7 +53,7 @@ public class Tournament {
     public Tournament() {
     }
 
-    public TournamentTable getTable() {
+    public TournamentTable generateTable() {
         return new TournamentTable(this.matches, this.pointsPerWin, this.pointsPerDraw);
     }
 

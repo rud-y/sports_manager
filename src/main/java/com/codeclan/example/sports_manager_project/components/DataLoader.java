@@ -37,31 +37,32 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
 
         //countries
-        Country can = new Country("Canada");
-        Country eng = new Country("England");
-        Country fra = new Country("France");
-        Country ger = new Country("Germany");
-        Country ita = new Country( "Italy");
-        Country sco = new Country("Scotland");
-        Country spa = new Country("Spain");
-        Country slo = new Country("Slovakia");
-        Country usa = new Country("USA");
-        Country wal = new Country("Wales");
-        Country[] countries = {can, eng, fra, ger, ita, sco, spa, slo, usa, wal};
-        for (Country country: countries){
-            countryRepository.save(country);
-        }
-
-        //sports
-        Sport basketball = new Sport("Basketball");
+//        Country can = new Country("Canada");
+//        Country eng = new Country("England");
+//        Country fra = new Country("France");
+//        Country ger = new Country("Germany");
+//        Country ita = new Country( "Italy");
+//        Country sco = new Country("Scotland");
+//        Country spa = new Country("Spain");
+//        Country slo = new Country("Slovakia");
+//        Country usa = new Country("USA");
+//        Country wal = new Country("Wales");
+//        Country[] countries = {can, eng, fra, ger, ita, sco, spa, slo, usa, wal};
+//        for (Country country: countries){
+//            countryRepository.save(country);
+//        }
+//
+//        //sports
+//        Sport basketball = new Sport("Basketball");
         Sport football = new Sport("Football");
-        Sport iceHockey = new Sport("Ice Hockey");
-        Sport rugbyLeague = new Sport("Rugby League");
-        Sport rugbyUnion = new Sport("Rugby Union");
-        Sport[] sports = {basketball, football, iceHockey, rugbyLeague, rugbyUnion};
-        for (Sport sport: sports) {
-            sportRepository.save(sport);
-        }
+//        Sport iceHockey = new Sport("Ice Hockey");
+//////        Sport rugbyLeague = new Sport("Rugby League");
+//////        Sport rugbyUnion = new Sport("Rugby Union");
+//////        Sport[] sports = {basketball, football, iceHockey, rugbyLeague, rugbyUnion};
+//////        for (Sport sport: sports) {
+//////            sportRepository.save(sport);
+//////        }
+        sportRepository.save(football);
 
         //venues
         Venue pisces = new Venue("Pisces Park");
@@ -81,6 +82,7 @@ public class DataLoader implements ApplicationRunner {
 
         //tournament
         Tournament alphabetLeague = new Tournament("Alphabet League", football, 3, 1);
+        tournamentRepository.save(alphabetLeague);
 
         //add teams to tournament
         alphabetLeague.addTeam(alpha);
@@ -89,8 +91,11 @@ public class DataLoader implements ApplicationRunner {
 
         //matches
         TeamMatch match1 = new TeamMatch(alpha, beta, alpha.getVenue(), alphabetLeague);
-        TeamMatch match2 = new TeamMatch(beta, alpha, beta.getVenue(), alphabetLeague);
-        tournamentRepository.save(alphabetLeague);
+        teamMatchRepository.save(match1);
+//        TeamMatch match2 = new TeamMatch(beta, alpha, beta.getVenue(), alphabetLeague);
+//        teamMatchRepository.save(match2);
+
+//        tournamentRepository.save(alphabetLeague);
 
 
         //        TeamMatch[] teamMatches = {match1, match2};
