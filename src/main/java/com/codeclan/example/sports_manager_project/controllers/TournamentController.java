@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class TournamentController {
@@ -31,6 +32,15 @@ public class TournamentController {
     @GetMapping(value = "/tournaments/{id}")
     public ResponseEntity getTournament(@PathVariable Long id) {
         return new ResponseEntity<>(tournamentRepository.findById(id), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/tournaments/{id}/table")
+    public ResponseEntity getTournamentTable(@PathVariable Long id) {
+        Optional<Tournament> tournament = tournamentRepository.findById(id);
+        if (tournament.isPresent() ) {
+            return new ResponseEntity<>(tournament.get().generateTable(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(null, HttpStatus.I_AM_A_TEAPOT);
     }
 
     @PostMapping(value = "/tournaments")

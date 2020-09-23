@@ -25,7 +25,6 @@ public class Team {
 
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @JsonBackReference
     @JoinTable(
             name= "teams_players",
             joinColumns = {@JoinColumn(name = "team_id", nullable = false, updatable = false)},
