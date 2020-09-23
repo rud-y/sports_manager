@@ -54,7 +54,7 @@ public class Tournament {
     }
 
     public TournamentTable generateTable() {
-        return new TournamentTable(this.matches, this.pointsPerWin, this.pointsPerDraw);
+        return new TournamentTable(this.teams, this.matches, this.pointsPerWin, this.pointsPerDraw);
     }
 
     public void addTeam(Team team) {

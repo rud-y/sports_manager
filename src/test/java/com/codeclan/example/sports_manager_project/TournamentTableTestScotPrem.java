@@ -63,11 +63,16 @@ public class TournamentTableTestScotPrem {
         match6.setScore1(3);
         match6.setScore2(3);
 
-        table = new TournamentTable(matchesArrayList, 3, 1);
-        //        Hibs 2 1 0 10 4 7
-        //        Hearts 1 1 1 6 9 4
-        //        Celtic 0 3 0 5 5 3
-        //        Rangers 0 1 2 1 4 1
+        ArrayList<Team> teams = new ArrayList<>();
+        teams.add(hibs);
+        teams.add(hearts);
+        teams.add(celtic);
+        teams.add(rangers);
+        table = new TournamentTable(teams, matchesArrayList, 3, 1);
+        // Hibs 2 1 0 10 4 7
+        // Hearts 1 1 1 6 9 4
+        // Celtic 0 3 0 5 5 3
+        // Rangers 0 1 2 1 4 1
     }
 
     @Test

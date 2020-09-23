@@ -10,14 +10,16 @@ public class TournamentTable {
 
     private Long id;
 
+    private List<Team> teams;
     private List<TeamMatch> matches;
 
     private ArrayList<TournamentTableRow> rows;
     private int pointsPerWin;
     private int pointsPerDraw;
 
-    public TournamentTable(List<TeamMatch> matches, int pointsPerWin, int pointsPerDraw) {
+    public TournamentTable(List<Team> teams, List<TeamMatch> matches, int pointsPerWin, int pointsPerDraw) {
         this.matches = matches;
+        this.teams = teams;
         this.rows = new ArrayList<>();
         this.pointsPerWin = pointsPerWin;
         this.pointsPerDraw = pointsPerDraw;
@@ -31,6 +33,10 @@ public class TournamentTable {
     }
 
     private void calculate() {
+        //Create rows
+        for (Team team: teams) {
+            createRecord(team);
+        }
         //Process matches into records
         for(TeamMatch match: matches) {
             processMatch(match);
@@ -90,6 +96,5 @@ public class TournamentTable {
         TournamentTableRow newRow = new TournamentTableRow(team);
         this.rows.add(newRow);
     }
-
 
 }
