@@ -44,14 +44,14 @@ public class TournamentTableRow implements Comparable<TournamentTableRow>{
         else if (other.getRecord().getDifference() != this.getRecord().getDifference()) {
             return other.getRecord().getDifference() - this.getRecord().getDifference();
         }
-        else if (other.getRecord().getScoreFor() != this.getRecord().getScoreAgainst()) {
-            return other.getRecord().getScoreFor() - this.getRecord().getScoreAgainst();
+        else if (other.getRecord().getScoreFor() != this.getRecord().getScoreFor()) {
+            return other.getRecord().getScoreFor() - this.getRecord().getScoreFor();
         }
         else if (other.getRecord().getWinPercentage() != this.getRecord().getWinPercentage()){
             return other.getRecord().getWinPercentage() - this.getRecord().getWinPercentage();
         }
         else {
-            return 0;
+            return this.team.getName().compareTo(other.team.getName());
         }
     }
 }

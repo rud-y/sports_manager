@@ -165,7 +165,7 @@ public class DataLoader implements ApplicationRunner {
         tournamentRepository.save(codeclanLeague);
 
         //add teams to tournament
-        for (Team team: teams) {
+        for (Team team: codeclanTeams) {
             codeclanLeague.addTeam(team);
         }
         tournamentRepository.save(codeclanLeague);

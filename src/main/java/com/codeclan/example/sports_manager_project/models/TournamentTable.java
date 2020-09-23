@@ -39,7 +39,9 @@ public class TournamentTable {
         }
         //Process matches into records
         for(TeamMatch match: matches) {
-            processMatch(match);
+            if (match.getCompleted()) {
+                processMatch(match);
+            }
         }
         //Evaluate points for each record
         for(TournamentTableRow row: rows) {
