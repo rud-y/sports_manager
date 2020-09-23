@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TournamentTableTestScotPrem {
+public class TournamentTestScotPrem {
 
     private Tournament scotPrem;
     private Team rangers;
@@ -27,7 +27,7 @@ public class TournamentTableTestScotPrem {
 
     @Before
     public void before() {
-
+        scotPrem = new Tournament("Scottish Premier", new Sport("Football"), 3, 1);
         rangers = new Team("Glasgow Rangers", "Rangers", new Venue("Ibrox"));
         celtic = new Team("Glasgow Celtic", "Celtic", new Venue("Celtic Park"));
         hibs = new Team("Hibernian", "Hibs", new Venue("Easter Road"));
@@ -39,9 +39,8 @@ public class TournamentTableTestScotPrem {
         match5 = new TeamMatch(rangers, hibs, rangers.getVenue(), scotPrem);
         match6 = new TeamMatch(hearts, celtic, hearts.getVenue(), scotPrem);
         TeamMatch[] matches = {match1, match2, match3, match4, match5, match6};
-        ArrayList<TeamMatch> matchesArrayList = new ArrayList<>();
         for(TeamMatch match: matches) {
-            matchesArrayList.add(match);
+            scotPrem.addMatch(match);
         }
 
         // Rangers 0, Celtic 0
@@ -62,8 +61,7 @@ public class TournamentTableTestScotPrem {
         // Hearts 3 Celtic 3
         match6.setScore1(3);
         match6.setScore2(3);
-
-        table = new TournamentTable(matchesArrayList, 3, 1);
+        table = scotPrem.getTable();
         //        Hibs 2 1 0 10 4 7
         //        Hearts 1 1 1 6 9 4
         //        Celtic 0 3 0 5 5 3
@@ -71,8 +69,13 @@ public class TournamentTableTestScotPrem {
     }
 
     @Test
-    public void hasMatches() {
+    public void tableHasMatches() {
         assertEquals(6, table.getMatches().size());
+    }
+
+    @Test
+    public void tournamentHasMatches() {
+        assertEquals(6, scotPrem.getMatches().size());
     }
 
     @Test
@@ -155,12 +158,5 @@ public class TournamentTableTestScotPrem {
         assertEquals(3, table.findRowByTeam(celtic).getPoints());
         assertEquals(1, table.findRowByTeam(rangers).getPoints());
     }
-
-    @Test
-    public void canSortTableCorrectly() {
-        assertEquals(0, table.getRows().indexOf(table.findRowByTeam(hibs)));
-        assertEquals(1, table.getRows().indexOf(table.findRowByTeam(hearts)));
-        assertEquals(2, table.getRows().indexOf(table.findRowByTeam(celtic)));
-        assertEquals(3, table.getRows().indexOf(table.findRowByTeam(rangers)));
-    }
 }
+

@@ -36,23 +36,25 @@ public class Tournament {
     @JsonIgnoreProperties({"tournament"})
     private List<TeamMatch> matches;
 
-    public Tournament(String name, Sport sport) {
+    @Column
+    private int pointsPerWin;
+
+    @Column
+    private int pointsPerDraw;
+
+    public Tournament(String name, Sport sport, int pointsPerWin, int pointsPerDraw) {
         this.name = name;
         this.sport = sport;
+        this.pointsPerWin = pointsPerWin;
+        this.pointsPerDraw = pointsPerDraw;
         this.teams = new ArrayList<>();
         this.matches = new ArrayList<>();
     }
     public Tournament() {
     }
 
-    public TournamentTable generateTable() {
-        TournamentTable table = new TournamentTable(this.matches);
-        table.calculate();
-        return table;
-    }
-
     public TournamentTable getTable() {
-        return generateTable();
+        return new TournamentTable(this.matches, this.pointsPerWin, this.pointsPerDraw);
     }
 
     public void addTeam(Team team) {
@@ -76,6 +78,22 @@ public class Tournament {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getPointsPerWin() {
+        return pointsPerWin;
+    }
+
+    public void setPointsPerWin(int pointsPerWin) {
+        this.pointsPerWin = pointsPerWin;
+    }
+
+    public int getPointsPerDraw() {
+        return pointsPerDraw;
+    }
+
+    public void setPointsPerDraw(int pointsPerDraw) {
+        this.pointsPerDraw = pointsPerDraw;
     }
 
     public Sport getSport() {

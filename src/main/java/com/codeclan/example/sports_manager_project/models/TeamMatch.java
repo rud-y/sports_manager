@@ -45,11 +45,12 @@ public class TeamMatch {
     @Column
     private Boolean completed;
 
-    public TeamMatch(Team team1, Team team2, Venue venue) {
+    public TeamMatch(Team team1, Team team2, Venue venue, Tournament tournament) {
         this.team1 = team1;
         this.team2 = team2;
         this.score1 = 0;
         this.score2 = 0;
+        this.tournament = tournament;
         this.venue = venue;
         this.scoreEvents = new ArrayList<>();
         this.completed = false;

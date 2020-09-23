@@ -2,6 +2,7 @@ package com.codeclan.example.sports_manager_project.models;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -11,23 +12,48 @@ public class TournamentTable {
 
     private List<TeamMatch> matches;
 
-    private HashMap<Team, TeamRecord> records;
+    private ArrayList<TournamentTableRow> rows;
+    private int pointsPerWin;
+    private int pointsPerDraw;
 
-    public TournamentTable(List<TeamMatch> matches) {
+    public TournamentTable(List<TeamMatch> matches, int pointsPerWin, int pointsPerDraw) {
         this.matches = matches;
-        this.records = new HashMap<>();
+        this.rows = new ArrayList<>();
+        this.pointsPerWin = pointsPerWin;
+        this.pointsPerDraw = pointsPerDraw;
+        this.calculate();
     }
 
     public TournamentTable() {}
 
-    public HashMap<Team, TeamRecord> getRecords() {
-        return this.records;
+    public ArrayList<TournamentTableRow> getRows() {
+        return this.rows;
     }
 
-    public void calculate() {
+    public List<TeamMatch> getMatches() {
+        return matches;
+    }
+
+    public int getPointsPerWin() {
+        return pointsPerWin;
+    }
+
+    public int getPointsPerDraw() {
+        return pointsPerDraw;
+    }
+
+    private void calculate() {
+        //Process matches into records
         for(TeamMatch match: matches) {
             processMatch(match);
         }
+        //Evaluate points for each record
+        for(TournamentTableRow row: rows) {
+            int points = evaluateRecord(row.getRecord());
+            row.setPoints(points);
+        }
+        //Sort records by number of points
+        Collections.sort(rows);
     }
 
     private void processMatch(TeamMatch match) {
@@ -38,24 +64,43 @@ public class TournamentTable {
             createRecord(match.getTeam2());
         }
         if(match.isDraw()) {
-            this.records.get(match.getTeam1()).addDraw();
-            this.records.get(match.getTeam2()).addDraw();
+            this.findRowByTeam(match.getTeam1()).getRecord().addDraw();
+            this.findRowByTeam(match.getTeam2()).getRecord().addDraw();
         } else {
-            this.records.get(match.getWinner()).addWin();
-            this.records.get(match.getLoser()).addLoss();
+            this.findRowByTeam(match.getWinner()).getRecord().addWin();
+            this.findRowByTeam(match.getLoser()).getRecord().addLoss();
         }
-        this.records.get(match.getTeam1()).addFor(match.getScore1());
-        this.records.get(match.getTeam1()).addAgainst(match.getScore2());
-        this.records.get(match.getTeam2()).addFor(match.getScore2());
-        this.records.get(match.getTeam2()).addAgainst(match.getScore1());
+        this.findRowByTeam(match.getTeam1()).getRecord().addFor(match.getScore1());
+        this.findRowByTeam(match.getTeam1()).getRecord().addAgainst(match.getScore2());
+        this.findRowByTeam(match.getTeam2()).getRecord().addFor(match.getScore2());
+        this.findRowByTeam(match.getTeam2()).getRecord().addAgainst(match.getScore1());
+    }
+
+    private int evaluateRecord(TeamRecord record) {
+        return record.getWins() * pointsPerWin + record.getDraws() * pointsPerDraw;
+    }
+
+    public TournamentTableRow findRowByTeam(Team team) {
+        for (TournamentTableRow row: rows) {
+            if (row.getTeam() == team) {
+                return row;
+            }
+        }
+        return null;
     }
 
     private Boolean hasRecord (Team team) {
-        return records.containsKey(team);
+        for (TournamentTableRow row: rows) {
+            if (row.getTeam() == team) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void createRecord(Team team) {
-        records.put(team, new TeamRecord());
+        TournamentTableRow newRow = new TournamentTableRow(team);
+        this.rows.add(newRow);
     }
 
 

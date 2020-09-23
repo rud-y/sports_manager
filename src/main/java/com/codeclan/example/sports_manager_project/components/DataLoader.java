@@ -80,7 +80,7 @@ public class DataLoader implements ApplicationRunner {
         }
 
         //tournament
-        Tournament alphabetLeague = new Tournament("Alphabet League", football);
+        Tournament alphabetLeague = new Tournament("Alphabet League", football, 3, 1);
 
         //add teams to tournament
         alphabetLeague.addTeam(alpha);
@@ -88,16 +88,15 @@ public class DataLoader implements ApplicationRunner {
         tournamentRepository.save(alphabetLeague);
 
         //matches
-        TeamMatch match1 = new TeamMatch(alpha, beta, alpha.getVenue());
-        TeamMatch match2 = new TeamMatch(beta, alpha, beta.getVenue());
-        TeamMatch[] teamMatches = {match1, match2};
-        for (TeamMatch match: teamMatches) {
-            teamMatchRepository.save(match);
-        }
-
-        //add matches to tournament
-        alphabetLeague.addMatch(match1);
+        TeamMatch match1 = new TeamMatch(alpha, beta, alpha.getVenue(), alphabetLeague);
+        TeamMatch match2 = new TeamMatch(beta, alpha, beta.getVenue(), alphabetLeague);
         tournamentRepository.save(alphabetLeague);
+
+
+        //        TeamMatch[] teamMatches = {match1, match2};
+//        for (TeamMatch match: teamMatches) {
+//            teamMatchRepository.save(match);
+//        }
 
 
 

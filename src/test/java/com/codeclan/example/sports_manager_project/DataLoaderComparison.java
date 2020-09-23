@@ -28,11 +28,11 @@ public class DataLoaderComparison {
         beta = new Team("Beta City", "Beta C", scorpio);
 
         //tournament
-        alphabetLeague = new Tournament("Alphabet League", football);
+        alphabetLeague = new Tournament("Alphabet League", football, 3, 1);
 
         //matches
-        match1 = new TeamMatch(alpha, beta, alpha.getVenue());
-        match2 = new TeamMatch(beta, alpha, beta.getVenue());
+        match1 = new TeamMatch(alpha, beta, alpha.getVenue(), alphabetLeague);
+        match2 = new TeamMatch(beta, alpha, beta.getVenue(), alphabetLeague);
     }
 
     @Test
@@ -47,6 +47,12 @@ public class DataLoaderComparison {
         alphabetLeague.addMatch(match1);
         alphabetLeague.addMatch(match2);
         assertEquals(2, alphabetLeague.getMatches().size());
+    }
+
+    @Test
+    public void matchHasTournament() {
+        alphabetLeague.addMatch(match1);
+        assertEquals(alphabetLeague, match1.getTournament());
     }
 
 }
