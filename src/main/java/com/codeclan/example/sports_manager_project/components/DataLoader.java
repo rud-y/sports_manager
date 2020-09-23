@@ -131,12 +131,49 @@ public class DataLoader implements ApplicationRunner {
         teamMatchRepository.save(match4);
 
 
+        //CODECLAN CHAMPIONSHIP
+        //Venues
+        Venue amstrad = new Venue("Amstrad Arena");
+        Venue atari = new Venue("Atari Avenue");
+        Venue commodore = new Venue("Commodore Crescent");
+        Venue dell = new Venue("Dell Lane");
+        Venue hewlett = new Venue("Hewlett Hall");
+        Venue packard = new Venue("Packard Park");
+        Venue sinclair = new Venue("Sinclair Street");
+        Venue toshiba = new Venue("Toshiba Terrace");
+        Venue[] codeclanVenues = {amstrad, atari, commodore, dell, hewlett, packard, sinclair, toshiba};
+        for (Venue venue: codeclanVenues) {
+            venueRepository.save(venue);
+        }
 
+        //Teams
+        Team cobol = new Team("Cobol Albion", "Cobol A", amstrad);
+        Team cplusplus = new Team("C++ Wednesday", "C++ Weds", atari);
+        Team fortran = new Team("Fortran Rangers", "Fortran R", commodore);
+        Team haskell = new Team("Haskell Town", "Haskell T", dell);
+        Team java = new Team("Java City", "Java C", hewlett);
+        Team pascal = new Team("Pascal Athletic", "Pascal A", packard);
+        Team python = new Team("Python United", "Python Utd", sinclair);
+        Team ruby = new Team("Ruby Rovers", "Ruby R", toshiba);
+        Team[] codeclanTeams = {cobol, cplusplus, fortran, haskell, java, pascal, python, ruby};
+        for (Team team: codeclanTeams) {
+            teamRepository.save(team);
+        }
 
+        //tournament
+        Tournament codeclanLeague = new Tournament("Codeclan Champs", football, 3, 1);
+        tournamentRepository.save(codeclanLeague);
 
+        //add teams to tournament
+        for (Team team: teams) {
+            codeclanLeague.addTeam(team);
+        }
+        tournamentRepository.save(codeclanLeague);
 
-
-
+        //matches
+        TeamMatch game1 = new TeamMatch(cobol, cplusplus, cobol.getVenue(), codeclanLeague);
+        createResult(game1);
+        teamMatchRepository.save(game1);
 
 
         //        //premiership
