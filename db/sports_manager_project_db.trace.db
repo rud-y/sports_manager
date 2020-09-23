@@ -4834,8 +4834,13 @@ Caused by: java.nio.channels.OverlappingFileLockException
 	at java.base/java.nio.channels.FileChannel.tryLock(FileChannel.java:1165)
 	at org.h2.mvstore.FileStore.open(FileStore.java:163)
 	... 28 more
+<<<<<<< HEAD
+2020-09-22 20:44:20 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/user/e41/codeclan_work/week_14/sports_manager_project/db/sports_manager_project_db.mv.db [1.4.200/7]" [50000-200]
+=======
 2020-09-23 07:35:51 database: flush
 org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/user/e41/projects/tournament_manager/tournament_manager_server/db/sports_manager_project_db.mv.db [1.4.200/7]" [50000-200]
+>>>>>>> a6653c623d82a50229d00a647c76f9fae5711672
 	at org.h2.message.DbException.get(DbException.java:194)
 	at org.h2.message.DbException.convert(DbException.java:347)
 	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
@@ -4869,11 +4874,19 @@ org.h2.message.DbException: General error: "java.lang.IllegalStateException: The
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:834)
+<<<<<<< HEAD
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/user/e41/codeclan_work/week_14/sports_manager_project/db/sports_manager_project_db.mv.db [1.4.200/7]" [50000-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 33 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:/Users/user/e41/codeclan_work/week_14/sports_manager_project/db/sports_manager_project_db.mv.db [1.4.200/7]
+=======
 Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/user/e41/projects/tournament_manager/tournament_manager_server/db/sports_manager_project_db.mv.db [1.4.200/7]" [50000-200]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
 	... 33 more
 Caused by: java.lang.IllegalStateException: The file is locked: nio:/Users/user/e41/projects/tournament_manager/tournament_manager_server/db/sports_manager_project_db.mv.db [1.4.200/7]
+>>>>>>> a6653c623d82a50229d00a647c76f9fae5711672
 	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:950)
 	at org.h2.mvstore.FileStore.open(FileStore.java:166)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:381)
@@ -4886,8 +4899,13 @@ Caused by: java.nio.channels.OverlappingFileLockException
 	at java.base/java.nio.channels.FileChannel.tryLock(FileChannel.java:1165)
 	at org.h2.mvstore.FileStore.open(FileStore.java:163)
 	... 28 more
+<<<<<<< HEAD
+2020-09-22 20:44:20 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/user/e41/codeclan_work/week_14/sports_manager_project/db/sports_manager_project_db.mv.db [1.4.200/7]" [50000-200]
+=======
 2020-09-23 07:35:51 database: flush
 org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/user/e41/projects/tournament_manager/tournament_manager_server/db/sports_manager_project_db.mv.db [1.4.200/7]" [50000-200]
+>>>>>>> a6653c623d82a50229d00a647c76f9fae5711672
 	at org.h2.message.DbException.get(DbException.java:194)
 	at org.h2.message.DbException.convert(DbException.java:347)
 	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
@@ -4921,6 +4939,13 @@ org.h2.message.DbException: General error: "java.lang.IllegalStateException: The
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:834)
+<<<<<<< HEAD
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/user/e41/codeclan_work/week_14/sports_manager_project/db/sports_manager_project_db.mv.db [1.4.200/7]" [50000-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 33 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:/Users/user/e41/codeclan_work/week_14/sports_manager_project/db/sports_manager_project_db.mv.db [1.4.200/7]
+=======
 Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "java.lang.IllegalStateException: The file is locked: nio:/Users/user/e41/projects/tournament_manager/tournament_manager_server/db/sports_manager_project_db.mv.db [1.4.200/7]" [50000-200]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
@@ -8599,6 +8624,7 @@ Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "java.lang.I
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
 	... 33 more
 Caused by: java.lang.IllegalStateException: The file is locked: nio:/Users/user/e41/projects/tournament_manager/tournament_manager_server/db/sports_manager_project_db.mv.db [1.4.200/7]
+>>>>>>> a6653c623d82a50229d00a647c76f9fae5711672
 	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:950)
 	at org.h2.mvstore.FileStore.open(FileStore.java:166)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:381)
