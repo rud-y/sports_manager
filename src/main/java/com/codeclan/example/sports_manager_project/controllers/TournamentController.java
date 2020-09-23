@@ -45,7 +45,11 @@ public class TournamentController {
 
     @GetMapping(value = "/tournaments/{id}/teams")
     public ResponseEntity getTeams(@PathVariable Long id) {
-        return new ResponseEntity<>(tournamentRepository.findById(id), HttpStatus.OK);
+        Optional<Tournament> tournament = tournamentRepository.findById(id);
+        if (tournament.isPresent() ) {
+            return new ResponseEntity<>(tournament.get().getTeams(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(null, HttpStatus.I_AM_A_TEAPOT);
     }
 
 
