@@ -67,7 +67,9 @@ public class DataLoader implements ApplicationRunner {
         //venues
         Venue pisces = new Venue("Pisces Park");
         Venue scorpio = new Venue("Scorpio Stadium");
-        Venue[] venues = {pisces, scorpio};
+        Venue libra = new Venue("Libra Links");
+        Venue aries = new Venue("Aries Arena");
+        Venue[] venues = {pisces, scorpio, libra, aries};
         for (Venue venue: venues) {
             venueRepository.save(venue);
         }
@@ -75,7 +77,9 @@ public class DataLoader implements ApplicationRunner {
         //teams
         Team alpha = new Team("Alpha United", "Alpha U", pisces);
         Team beta = new Team("Beta City", "Beta C", scorpio);
-        Team[] teams = {alpha, beta};
+        Team gamma = new Team("Gamma Athletic", "Gamma A", libra);
+        Team delta = new Team("Delta Rovers", "Delta R", aries);
+        Team[] teams = {alpha, beta, gamma, delta};
         for (Team team: teams) {
             teamRepository.save(team);
         }
@@ -87,13 +91,23 @@ public class DataLoader implements ApplicationRunner {
         //add teams to tournament
         alphabetLeague.addTeam(alpha);
         alphabetLeague.addTeam(beta);
+        alphabetLeague.addTeam(gamma);
+        alphabetLeague.addTeam(delta);
         tournamentRepository.save(alphabetLeague);
 
         //matches
         TeamMatch match1 = new TeamMatch(alpha, beta, alpha.getVenue(), alphabetLeague);
+        match1.setScore1(2);
+        match1.setScore2(1);
         teamMatchRepository.save(match1);
-//        TeamMatch match2 = new TeamMatch(beta, alpha, beta.getVenue(), alphabetLeague);
-//        teamMatchRepository.save(match2);
+        TeamMatch match2 = new TeamMatch(gamma, delta, gamma.getVenue(), alphabetLeague);
+        match2.setScore1(0);
+        match2.setScore2(3);
+        teamMatchRepository.save(match2);
+        TeamMatch match3 = new TeamMatch(beta, gamma, beta.getVenue(), alphabetLeague);
+        teamMatchRepository.save(match3);
+        TeamMatch match4 = new TeamMatch(delta, alpha, delta.getVenue(), alphabetLeague);
+        teamMatchRepository.save(match4);
 
 //        tournamentRepository.save(alphabetLeague);
 

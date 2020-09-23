@@ -69,23 +69,8 @@ public class TournamentTestScotPrem {
     }
 
     @Test
-    public void tableHasMatches() {
-        assertEquals(6, table.getMatches().size());
-    }
-
-    @Test
     public void tournamentHasMatches() {
         assertEquals(6, scotPrem.getMatches().size());
-    }
-
-    @Test
-    public void hasPointsPerWin() {
-        assertEquals(3, table.getPointsPerWin());
-    }
-
-    @Test
-    public void hasPointsPerDraw(){
-        assertEquals(1, table.getPointsPerDraw());
     }
 
     @Test

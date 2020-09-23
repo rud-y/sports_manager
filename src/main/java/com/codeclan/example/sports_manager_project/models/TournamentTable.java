@@ -30,18 +30,6 @@ public class TournamentTable {
         return this.rows;
     }
 
-    public List<TeamMatch> getMatches() {
-        return matches;
-    }
-
-    public int getPointsPerWin() {
-        return pointsPerWin;
-    }
-
-    public int getPointsPerDraw() {
-        return pointsPerDraw;
-    }
-
     private void calculate() {
         //Process matches into records
         for(TeamMatch match: matches) {
