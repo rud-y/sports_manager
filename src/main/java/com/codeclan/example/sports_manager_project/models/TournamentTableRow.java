@@ -47,8 +47,11 @@ public class TournamentTableRow implements Comparable<TournamentTableRow>{
         else if (other.getRecord().getScoreFor() != this.getRecord().getScoreAgainst()) {
             return other.getRecord().getScoreFor() - this.getRecord().getScoreAgainst();
         }
-        else {
+        else if (other.getRecord().getWinPercentage() != this.getRecord().getWinPercentage()){
             return other.getRecord().getWinPercentage() - this.getRecord().getWinPercentage();
+        }
+        else {
+            return 0;
         }
     }
 }

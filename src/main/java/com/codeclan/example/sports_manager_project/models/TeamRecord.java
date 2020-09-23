@@ -89,5 +89,10 @@ public class TeamRecord {
 
     public int getPlayed() { return wins + draws + losses; }
 
-    public int getWinPercentage() { return wins / getPlayed() * 100;}
+    public int getWinPercentage() {
+        if (getPlayed() == 0) {
+            return 0;
+        }
+        return wins / getPlayed() * 100;
+    }
 }
