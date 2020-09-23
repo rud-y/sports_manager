@@ -24,6 +24,7 @@ public class Tournament {
 
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JsonBackReference
     @JoinTable(
             name = "tournaments_teams",
             joinColumns = {@JoinColumn(name = "tournament_id", nullable = false, updatable = false)},
@@ -48,6 +49,10 @@ public class Tournament {
         TournamentTable table = new TournamentTable(this.matches);
         table.calculate();
         return table;
+    }
+
+    public TournamentTable getTable() {
+        return generateTable();
     }
 
     public void addTeam(Team team) {
