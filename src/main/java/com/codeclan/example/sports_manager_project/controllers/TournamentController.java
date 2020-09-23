@@ -43,6 +43,12 @@ public class TournamentController {
         return new ResponseEntity<>(null, HttpStatus.I_AM_A_TEAPOT);
     }
 
+    @GetMapping(value = "/tournaments/{id}/teams")
+    public ResponseEntity getTeams(@PathVariable Long id) {
+        return new ResponseEntity<>(tournamentRepository.findById(id), HttpStatus.OK);
+    }
+
+
     @PostMapping(value = "/tournaments")
     public ResponseEntity<Tournament> postTournament(@RequestBody Tournament tournament) {
         tournamentRepository.save(tournament);
