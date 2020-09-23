@@ -33,6 +33,13 @@ public class DataLoader implements ApplicationRunner {
 
     public DataLoader() {}
 
+
+    public void createResult(TeamMatch match) {
+        match.setScore1(32);
+        match.setScore2(12);
+        match.setCompleted(true);
+    }
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
@@ -102,34 +109,21 @@ public class DataLoader implements ApplicationRunner {
         }
 
         //tournament
-        Tournament alphabetLeague = new Tournament("Alphabet League", football, 3, 1);
+        Tournament alphabetLeague = new Tournament("Alphabet League", rugbyLeague, 2, 1);
         tournamentRepository.save(alphabetLeague);
 
         //add teams to tournament
-        alphabetLeague.addTeam(alpha);
-        alphabetLeague.addTeam(beta);
-        alphabetLeague.addTeam(gamma);
-        alphabetLeague.addTeam(delta);
-        alphabetLeague.addTeam(epsilon);
-        alphabetLeague.addTeam(zeta);
-        alphabetLeague.addTeam(eta);
-        alphabetLeague.addTeam(theta);
-        alphabetLeague.addTeam(iota);
-        alphabetLeague.addTeam(kappa);
-        alphabetLeague.addTeam(lambda);
-        alphabetLeague.addTeam(mu);
+        for (Team team: teams) {
+            alphabetLeague.addTeam(team);
+        }
         tournamentRepository.save(alphabetLeague);
 
         //matches
         TeamMatch match1 = new TeamMatch(alpha, beta, alpha.getVenue(), alphabetLeague);
-        match1.setScore1(2);
-        match1.setScore2(1);
-        match1.setCompleted(true);
+        createResult(match1);
         teamMatchRepository.save(match1);
         TeamMatch match2 = new TeamMatch(gamma, delta, gamma.getVenue(), alphabetLeague);
-        match2.setScore1(0);
-        match2.setScore2(3);
-        match2.setCompleted(true);
+        createResult(match2);
         teamMatchRepository.save(match2);
         TeamMatch match3 = new TeamMatch(beta, gamma, beta.getVenue(), alphabetLeague);
         teamMatchRepository.save(match3);
