@@ -1,5 +1,6 @@
 package com.codeclan.example.sports_manager_project.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
@@ -67,10 +68,12 @@ public class TeamMatch {
         }
     }
 
+    @JsonIgnore
     public Boolean isDraw() {
         return this.score1 == this.score2;
     }
 
+    @JsonIgnore
     public Team getWinner() {
         if (this.isDraw()) {
             return  null;
@@ -78,6 +81,7 @@ public class TeamMatch {
         return this.score1 > this.score2 ? this.team1 : this.team2;
     }
 
+    @JsonIgnore
     public Team getLoser() {
         if(this.isDraw()){
             return null;
