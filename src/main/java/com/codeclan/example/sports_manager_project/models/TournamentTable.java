@@ -1,9 +1,7 @@
 package com.codeclan.example.sports_manager_project.models;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class TournamentTable {
 
@@ -17,8 +15,24 @@ public class TournamentTable {
         this.matches = matches;
         this.records = new HashMap<>();
     }
-
     public TournamentTable() {}
+
+
+        //calculate win and draw points for different point schemes(tournaments)
+    public void pointsForWin(TeamMatch match) {
+        int points = 0;
+                if(match.getTournament().toString() == "football"){
+                    TeamRecord record = records.get(match.getWinner());
+                }
+    }
+
+//    public int evaluateTeamRecords() {
+
+//
+//    }
+
+
+
 
     public HashMap<Team, TeamRecord> getRecords() {
         return this.records;

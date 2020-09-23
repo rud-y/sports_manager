@@ -10,6 +10,7 @@ public class TeamRecord {
     private int losses;
     private int scoreFor;
     private int scoreAgainst;
+    private int points;
 
     public TeamRecord() {
         this.wins = 0;
@@ -17,9 +18,19 @@ public class TeamRecord {
         this.losses = 0;
         this.scoreFor = 0;
         this.scoreAgainst = 0;
+        this.points = 0;
     }
 
-//    public TeamRecord() {}
+    //    public TeamRecord() {}
+
+    //just setting points based on match
+    public int getPoints() {
+        return points;
+    }
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
 
     public Long getId() {
         return Id;

@@ -50,6 +50,7 @@ public class Tournament {
         return table;
     }
 
+
     public void addTeam(Team team) {
         this.teams.add(team);
     }
