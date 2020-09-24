@@ -1,5 +1,7 @@
 package com.codeclan.example.sports_manager_project.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,11 +12,17 @@ public class TournamentTable {
 
     private Long id;
 
+    @JsonIgnore
     private List<Team> teams;
+    @JsonIgnore
     private List<TeamMatch> matches;
 
     private ArrayList<TournamentTableRow> rows;
+
+    @JsonIgnore
     private int pointsPerWin;
+
+    @JsonIgnore
     private int pointsPerDraw;
 
     public TournamentTable(List<Team> teams, List<TeamMatch> matches, int pointsPerWin, int pointsPerDraw) {
