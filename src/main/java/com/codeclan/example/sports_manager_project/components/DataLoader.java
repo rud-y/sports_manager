@@ -112,14 +112,26 @@ public class DataLoader implements ApplicationRunner {
         tournamentRepository.save(alphabetLeague);
 
         //matches
-//        TeamMatch match1 = new TeamMatch(alpha, beta, alpha.getVenue(), alphabetLeague);
-//        teamMatchRepository.save(match1);
-//        TeamMatch match2 = new TeamMatch(gamma, delta, gamma.getVenue(), alphabetLeague);
-//        teamMatchRepository.save(match2);
-//        TeamMatch match3 = new TeamMatch(beta, gamma, beta.getVenue(), alphabetLeague);
-//        teamMatchRepository.save(match3);
-//        TeamMatch match4 = new TeamMatch(delta, alpha, delta.getVenue(), alphabetLeague);
-//        teamMatchRepository.save(match4);
+        TeamMatch match1 = new TeamMatch(alpha, beta, alpha.getVenue(), alphabetLeague);
+        match1.setScore1(24);
+        match1.setScore2(20);
+        match1.setCompleted(true);
+        teamMatchRepository.save(match1);
+        TeamMatch match2 = new TeamMatch(gamma, delta, gamma.getVenue(), alphabetLeague);
+        match2.setScore1(16);
+        match2.setScore2(20);
+        match2.setCompleted(true);
+        teamMatchRepository.save(match2);
+        TeamMatch match3 = new TeamMatch(eta, epsilon, beta.getVenue(), alphabetLeague);
+        match3.setScore1(28);
+        match3.setScore2(12);
+        match3.setCompleted(true);
+        teamMatchRepository.save(match3);
+        TeamMatch match4 = new TeamMatch(kappa, lambda, delta.getVenue(), alphabetLeague);
+        match4.setScore1(30);
+        match4.setScore2(6);
+        match4.setCompleted(true);
+        teamMatchRepository.save(match4);
 
 
         //CODECLAN CHAMPIONSHIP
@@ -152,7 +164,7 @@ public class DataLoader implements ApplicationRunner {
         }
 
         //tournament
-        Tournament codeclanLeague = new Tournament("Codeclan Champs", football, 3, 1);
+        Tournament codeclanLeague = new Tournament("Codeclan Championship", football, 3, 1);
         tournamentRepository.save(codeclanLeague);
 
         //add teams to tournament
