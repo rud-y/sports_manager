@@ -33,13 +33,6 @@ public class DataLoader implements ApplicationRunner {
 
     public DataLoader() {}
 
-
-    public void createResult(TeamMatch match) {
-        match.setScore1(32);
-        match.setScore2(12);
-        match.setCompleted(true);
-    }
-
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
@@ -119,16 +112,14 @@ public class DataLoader implements ApplicationRunner {
         tournamentRepository.save(alphabetLeague);
 
         //matches
-        TeamMatch match1 = new TeamMatch(alpha, beta, alpha.getVenue(), alphabetLeague);
-        createResult(match1);
-        teamMatchRepository.save(match1);
-        TeamMatch match2 = new TeamMatch(gamma, delta, gamma.getVenue(), alphabetLeague);
-        createResult(match2);
-        teamMatchRepository.save(match2);
-        TeamMatch match3 = new TeamMatch(beta, gamma, beta.getVenue(), alphabetLeague);
-        teamMatchRepository.save(match3);
-        TeamMatch match4 = new TeamMatch(delta, alpha, delta.getVenue(), alphabetLeague);
-        teamMatchRepository.save(match4);
+//        TeamMatch match1 = new TeamMatch(alpha, beta, alpha.getVenue(), alphabetLeague);
+//        teamMatchRepository.save(match1);
+//        TeamMatch match2 = new TeamMatch(gamma, delta, gamma.getVenue(), alphabetLeague);
+//        teamMatchRepository.save(match2);
+//        TeamMatch match3 = new TeamMatch(beta, gamma, beta.getVenue(), alphabetLeague);
+//        teamMatchRepository.save(match3);
+//        TeamMatch match4 = new TeamMatch(delta, alpha, delta.getVenue(), alphabetLeague);
+//        teamMatchRepository.save(match4);
 
 
         //CODECLAN CHAMPIONSHIP
@@ -171,9 +162,12 @@ public class DataLoader implements ApplicationRunner {
         tournamentRepository.save(codeclanLeague);
 
         //matches
-        TeamMatch game1 = new TeamMatch(cobol, cplusplus, cobol.getVenue(), codeclanLeague);
-        createResult(game1);
+        TeamMatch game1 = new TeamMatch(cobol, haskell, cobol.getVenue(), codeclanLeague);
         teamMatchRepository.save(game1);
+        TeamMatch game2 = new TeamMatch(fortran, cplusplus, fortran.getVenue(), codeclanLeague);
+        teamMatchRepository.save(game2);
+        TeamMatch game3 = new TeamMatch(java, pascal, cobol.getVenue(), codeclanLeague);
+        teamMatchRepository.save(game3);
 
 
         //        //premiership
