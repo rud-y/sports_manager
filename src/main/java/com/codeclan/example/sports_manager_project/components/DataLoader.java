@@ -214,46 +214,58 @@ public class DataLoader implements ApplicationRunner {
         }
         tournamentRepository.save(nhl);
 
-        //matches
+        //matches - results
         TeamMatch nhlMatch1 = new TeamMatch(boston, chicago, td, nhl);
         nhlMatch1.setScore1(4);
         nhlMatch1.setScore2(6);
         nhlMatch1.setCompleted(true);
-        teamMatchRepository.save(nhlMatch1);
+//        teamMatchRepository.save(nhlMatch1);
         TeamMatch nhlMatch2 = new TeamMatch(edmonton, detroit, oil, nhl);
         nhlMatch2.setScore1(3);
         nhlMatch2.setScore2(1);
         nhlMatch2.setCompleted(true);
-        teamMatchRepository.save(nhlMatch2);
+//        teamMatchRepository.save(nhlMatch2);
         TeamMatch nhlMatch3 = new TeamMatch(toronto, montreal , air, nhl);
         nhlMatch3.setScore1(5);
         nhlMatch3.setScore2(4);
         nhlMatch3.setCompleted(true);
-        teamMatchRepository.save(nhlMatch3);
+//        teamMatchRepository.save(nhlMatch3);
 
         TeamMatch nhlMatch4 = new TeamMatch(chicago, montreal , air, nhl);
         nhlMatch4.setScore1(2);
         nhlMatch4.setScore2(4);
         nhlMatch4.setCompleted(true);
-        teamMatchRepository.save(nhlMatch4);
+//        teamMatchRepository.save(nhlMatch4);
 
         TeamMatch nhlMatch5 = new TeamMatch(edmonton, toronto , air, nhl);
         nhlMatch5.setScore1(1);
         nhlMatch5.setScore2(6);
         nhlMatch5.setCompleted(true);
-        teamMatchRepository.save(nhlMatch5);
+//        teamMatchRepository.save(nhlMatch5);
 
         TeamMatch nhlMatch6 = new TeamMatch(boston, detroit , air, nhl);
         nhlMatch6.setScore1(7);
         nhlMatch6.setScore2(3);
         nhlMatch6.setCompleted(true);
-        teamMatchRepository.save(nhlMatch6);
+//        teamMatchRepository.save(nhlMatch6);
 
+        //matches - fixtures
+        TeamMatch nhlMatch7 = new TeamMatch(detroit, toronto, steel, nhl);
+        nhlMatch7.setCompleted(false);
 
-//        TeamMatch[] nhlMatches = {nhlMatch1, nhlMatch2, nhlMatch3, nhlMatch4, nhlMatch5, nhlMatch6};
-//        for(TeamMatch match: nhlMatches) {
-//            teamMatchRepository.save(match);
-//        }
+        TeamMatch nhlMatch8 = new TeamMatch(boston, edmonton, steel, nhl);
+        nhlMatch8.setCompleted(false);
+
+        TeamMatch nhlMatch9 = new TeamMatch(chicago, boston, steel, nhl);
+        nhlMatch9.setCompleted(false);
+
+        TeamMatch nhlMatch10 = new TeamMatch(toronto, chicago, steel, nhl);
+        nhlMatch10.setCompleted(false);
+
+        TeamMatch[] nhlMatches = {nhlMatch1, nhlMatch2, nhlMatch3, nhlMatch4, nhlMatch5, nhlMatch6, nhlMatch7, nhlMatch8, nhlMatch9, nhlMatch10};
+        for(TeamMatch match: nhlMatches) {
+            teamMatchRepository.save(match);
+        }
 
 
 
