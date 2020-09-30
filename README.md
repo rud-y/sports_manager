@@ -20,7 +20,9 @@ A user can create players, teams, tournaments, add matches and scores, and gener
 
 > Configure leagues for different sports
 
-#EXTENSIONS
-• Sort tables by different criteria 
+# EXTENSIONS
+• Sort tables by different criteria
+
 • Create knock-out tournaments
+
 • Create international tournaments
