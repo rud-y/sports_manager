@@ -6,13 +6,13 @@ A user can create players, teams, tournaments, add matches and scores, and gener
  
 
 #MVP
-• Create a player, team, and tournament
-• Add players to teams
-• Add teams to tournaments
-• Create team matches
-• Add a scores to matches
-• View league tables
-• Configure leagues for different sports
+> Create a player, team, and tournament
+> Add players to teams
+> Add teams to tournaments
+> Create team matches
+> Add a scores to matches
+> View league tables
+> Configure leagues for different sports
 
 #EXTENSIONS
 • Sort tables by different criteria 
