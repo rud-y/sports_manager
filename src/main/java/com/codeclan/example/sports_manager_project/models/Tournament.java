@@ -33,7 +33,7 @@ public class Tournament {
     )
     private List<Team> teams;
 
-    @OneToMany(mappedBy = "tournament")//
+    @OneToMany(mappedBy = "tournament")
     @JsonIgnoreProperties({"tournament"})
     private List<TeamMatch> matches;
 

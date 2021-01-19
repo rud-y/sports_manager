@@ -33,16 +33,17 @@ public class TeamMatchController {
         return new ResponseEntity<>(teamMatchRepository.findById(id), HttpStatus.OK);
     }
 
+    //POST match
     @PostMapping(value = "/team_matches")
-    public ResponseEntity<TeamMatch> postTeamMatch(@RequestBody TeamMatch customer){
-        teamMatchRepository.save(customer);
-        return new ResponseEntity<>(customer, HttpStatus.CREATED);
+    public ResponseEntity<TeamMatch> postTeamMatch(@RequestBody TeamMatch match){
+        teamMatchRepository.save(match);
+        return new ResponseEntity<>(match, HttpStatus.CREATED);
     }
 
     @PutMapping(value="/team_matches/{id}")
-    public ResponseEntity<TeamMatch> updateTeamMatch(@RequestBody TeamMatch customer) {
-        teamMatchRepository.save(customer);
-        return new ResponseEntity<>(customer, HttpStatus.OK);
+    public ResponseEntity<TeamMatch> updateTeamMatch(@RequestBody TeamMatch match) {
+        teamMatchRepository.save(match);
+        return new ResponseEntity<>(match, HttpStatus.OK);
     }
 
     @DeleteMapping(value="/team_matches/{id}")
